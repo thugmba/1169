@@ -21,8 +21,13 @@ format:
 
 **Deliverables**:
 
-- 5-page written report
-- 15-slide presentation
+- 5-page written report in PDF
+- 15-slide in PDF
+
+**Presentation**
+
+- Week 15: Submit written report and slide files
+- Week 16: Five minutes(2 minutes Q&A)
 
 ---
 
