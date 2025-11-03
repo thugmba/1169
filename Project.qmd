@@ -1,0 +1,300 @@
+---
+title: "Prompt Engineering for Business Innovation"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    embed-resources: true
+  # pdf:
+  #   toc: true
+  #   number-sections: true
+  #   colorlinks: true
+---
+
+## Project Overview
+
+**Project Title**: "Optimizing business function for a company in your home country using strategic prompt engineering"
+
+**Duration**: 5 weeks
+
+**Deliverables**:
+
+- 5-page written report
+- 15-slide presentation
+
+---
+
+## Suggested Project Scope
+
+Students will select a **real or hypothetical Taiwan-based business** (e.g., bubble tea chain, e-commerce startup, manufacturing SME, retail franchise) and use prompt engineering techniques to solve a specific business challenge in ONE of these areas:
+
+1. **Marketing**: Customer segmentation and campaign development
+2. **Operations**: Supply chain optimization or inventory management
+3. **Financial Analysis**: Performance analysis and forecasting
+4. **HR**: Competency framework or employee engagement strategy
+
+---
+
+## Detailed Steps to Formulate Report Topic
+
+### Step 1: Choose Your Business Context (Week 1)
+
+**What to do:**
+
+- Select a specific Taiwan-based company or industry (real or fictional)
+- Examples: "85�C Bakery," "TSMC supplier," "Shopee seller," "traditional tea shop expanding online"
+
+**Criteria for selection:**
+
+- Accessible information (public data, case studies, or reasonable assumptions)
+- Clear business challenges
+- Relevant to Taiwan's economic context
+
+**Document in your report:**
+
+- Company background (1 paragraph)
+- Industry context in Taiwan
+- Why you chose this business
+
+---
+
+### Step 2: Identify a Specific Business Problem (Week 1)
+
+**What to do:**
+
+- Narrow down to ONE functional area from the course modules:
+  - Marketing challenge (e.g., "How to attract Gen Z customers?")
+  - Operations issue (e.g., "High inventory costs during off-peak seasons")
+  - Financial concern (e.g., "Declining profit margins")
+  - HR need (e.g., "Hiring criteria for store managers")
+
+**Formulation technique:**
+
+- State the problem as a question: "How can [Company] improve [specific metric] by addressing [specific challenge]?"
+- Example: "How can a Taichung bubble tea chain reduce customer acquisition costs while expanding its loyalty program?"
+
+**Document in your report:**
+
+- Problem statement (2-3 sentences)
+- Business impact (why this matters)
+- Current challenges or gaps
+
+---
+
+### Step 3: Define Your Prompt Engineering Approach (Week 2)
+
+**What to do:**
+
+- Determine which prompt techniques from the course you'll apply:
+  - **Clarity & Specificity** (Week 3): For precise analysis
+  - **Chain-of-Thought** (Week 4): For complex reasoning
+  - **Data-Aware Prompting** (Week 6): For quantitative insights
+  - **Templates** (Week 5): For structured outputs
+
+**Create 3-5 core prompts** that you'll use throughout the project
+
+**Example approach:**
+
+- Prompt 1: Customer segmentation using personas template
+- Prompt 2: Competitive analysis with step-by-step reasoning
+- Prompt 3: Marketing campaign brief with data-driven insights
+
+**Document in your report:**
+
+- List of core prompts (with rationale for each)
+- Expected outputs from each prompt
+- How prompts connect to solve your business problem
+
+---
+
+### Step 4: Gather and Structure Your Data/Context (Week 2-3)
+
+**What to do:**
+
+- Collect relevant information:
+  - Financial data (revenue, costs, margins)
+  - Customer data (demographics, behavior, feedback)
+  - Operational data (inventory, lead times, capacity)
+  - Market data (competitors, trends, regulations)
+
+**Organize for prompting:**
+
+- Create simple tables or bullet lists
+- Prepare context paragraphs
+- Format data for insertion into prompts
+
+**Example:**
+
+```
+Monthly Revenue Data (2024):
+- Q1: NT$2.5M
+- Q2: NT$2.8M
+- Q3: NT$2.3M
+- Q4: NT$3.1M
+```
+
+**Document in your report:**
+
+- Data sources (even if hypothetical, state assumptions)
+- How you structured data for LLM input
+- Any limitations in data availability
+
+---
+
+### Step 5: Execute Iterative Prompt Testing (Week 3-4)
+
+**What to do:**
+
+- Run your initial prompts in ChatGPT
+- Evaluate outputs using these criteria:
+  - **Relevance**: Does it address your business problem?
+  - **Specificity**: Is it detailed enough to act on?
+  - **Accuracy**: Does it make logical sense?
+  - **Completeness**: Does it cover all necessary aspects?
+
+**Iteration process:**
+
+1. Run baseline prompt � Document output
+2. Identify weaknesses
+3. Refine prompt (add context, examples, constraints)
+4. Run revised prompt � Compare outputs
+5. Repeat 2-3 times per core prompt
+
+**Document in your report:**
+
+- **Iteration Log Table** showing:
+  - Version number
+  - Prompt text
+  - Key changes made
+  - Output quality rating
+  - Lessons learned
+
+---
+
+### Step 6: Analyze and Synthesize LLM Outputs (Week 4-5)
+
+**What to do:**
+
+- Extract actionable insights from your best prompt outputs
+- Organize findings by business function:
+  - **Marketing**: Segments, campaign ideas, messaging
+  - **Operations**: Efficiency improvements, cost savings
+  - **Financial**: Forecasts, ratio analysis, recommendations
+  - **HR**: Frameworks, job descriptions, training needs
+
+**Apply business judgment:**
+
+- Validate LLM suggestions against real-world constraints
+- Identify any hallucinations or unrealistic recommendations
+- Cross-reference with course materials or industry best practices
+
+**Document in your report:**
+
+- Summary of key findings (1-2 pages)
+- Business recommendations (prioritized list)
+- Critical evaluation of LLM output quality
+
+---
+
+### Step 7: Address Ethics and Limitations (Week 5)
+
+**What to do:**
+
+- Reflect on potential issues:
+  - **Bias**: Did prompts produce biased customer segments or hiring criteria?
+  - **Privacy**: What data should NOT be shared with LLMs?
+  - **Accuracy**: Where did the model hallucinate or make errors?
+  - **Transparency**: Should stakeholders know AI was used?
+
+**Propose guardrails:**
+
+- Prompt modifications to reduce bias
+- Human oversight checkpoints
+- Validation procedures
+
+**Document in your report:**
+
+- Ethical considerations (1/2 page)
+- Limitations of your approach
+- Recommended safeguards
+
+---
+
+### Step 8: Create Business Recommendations (Week 6)
+
+**What to do:**
+
+- Translate LLM insights into concrete action items:
+  - **Short-term** (implement in 1-3 months)
+  - **Medium-term** (3-6 months)
+  - **Long-term** (6-12 months)
+
+**Structure recommendations:**
+
+- What to do
+- Why (business rationale)
+- How (implementation steps)
+- Expected impact (qualitative or quantitative)
+
+**Example:**
+
+> **Recommendation 1**: Launch a LINE Official Account loyalty program
+> **Rationale**: LLM segmentation identified 65% of customers are aged 18-35 and prefer mobile engagement
+> **Implementation**: Partner with LINE, offer 10% discount for sign-ups, integrate with POS system
+> **Expected Impact**: 20% increase in repeat purchase rate within 6 months
+
+**Document in your report:**
+
+- 3-5 prioritized recommendations (1-2 pages)
+- Implementation roadmap
+- Success metrics
+
+---
+
+## Report Structure (5 Pages)
+
+1. **Executive Summary** (0.5 pages)
+   - Business problem, approach, key findings, top recommendation
+
+2. **Business Context & Problem Statement** (1 page)
+   - Company background, industry analysis, specific challenge
+
+3. **Methodology** (1 page)
+   - Prompt engineering approach, data sources, iteration process
+
+4. **Findings & Analysis** (1.5 pages)
+   - LLM outputs, iteration log highlights, key insights
+
+5. **Recommendations & Conclusion** (1 page)
+   - Actionable recommendations, limitations, ethical considerations, future work
+
+---
+
+## Presentation Structure (15 Slides)
+
+1. Title slide
+2. Company & problem overview (2 slides)
+3. Prompt engineering methodology (2 slides)
+4. Core prompts showcase (2-3 slides with before/after examples)
+5. Key findings (3-4 slides with visuals)
+6. Business recommendations (2 slides)
+7. Ethics & limitations (1 slide)
+8. Conclusion & Q&A (1 slide)
+
+---
+
+## Success Criteria
+
+- **Specificity**: Problem is narrow and actionable
+- **Technical application**: Demonstrates 3+ prompt techniques from course
+- **Business relevance**: Recommendations are practical for Taiwan context
+- **Iteration quality**: Shows meaningful prompt refinement
+- **Critical thinking**: Evaluates LLM limitations and proposes safeguards
+
+---
+
+## Conclusion
+
+This project scope is achievable in 6 weeks while allowing students to apply course concepts from Weeks 1-12 in a focused, practical way.
