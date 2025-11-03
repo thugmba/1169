@@ -2,5 +2,6 @@
 
 ## Project
 
-[Project](Project.html)
-[Report Template](template.docx)
+- [Project](Project.html)
+- [Report Template](template.docx)
+- [Slide Template]
