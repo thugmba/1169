@@ -33,7 +33,7 @@ format:
 
 ## Suggested Project Scope
 
-Students will select a **real or hypothetical Taiwan-based business** (e.g., bubble tea chain, e-commerce startup, manufacturing SME, retail franchise) and use prompt engineering techniques to solve a specific business challenge in ONE of these areas:
+Students will select a **real business** (e.g., bubble tea chain, e-commerce startup, manufacturing SME, retail franchise) and use prompt engineering techniques to solve a specific business challenge in ONE of these areas:
 
 1. **Marketing**: Customer segmentation and campaign development
 2. **Operations**: Supply chain optimization or inventory management
