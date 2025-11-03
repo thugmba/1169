@@ -7,4 +7,4 @@ Prompt engineering is crafting precise, context-rich inputs to large language mo
 
 - [Project](Project.html)
 - [Report Template](template.docx)
-- [Slide Template]()
+- [Slide Template](template.pptx)
