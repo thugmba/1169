@@ -49,7 +49,7 @@ Students will select a **real business** (e.g., bubble tea chain, e-commerce sta
 **What to do:**
 
 - Select a specific Taiwan-based company or industry (real or fictional)
-- Examples: "85�C Bakery," "TSMC supplier," "Shopee seller," "traditional tea shop expanding online"
+- Examples: "85C Bakery," "TSMC supplier," "Shopee seller," "traditional tea shop expanding online"
 
 **Criteria for selection:**
 
@@ -161,10 +161,10 @@ Monthly Revenue Data (2024):
 
 **Iteration process:**
 
-1. Run baseline prompt � Document output
+1. Run baseline prompt, document output
 2. Identify weaknesses
 3. Refine prompt (add context, examples, constraints)
-4. Run revised prompt � Compare outputs
+4. Run revised prompt, compare outputs
 5. Repeat 2-3 times per core prompt
 
 **Document in your report:**
@@ -260,7 +260,7 @@ Monthly Revenue Data (2024):
 
 ## Report Structure (5 Pages)
 
-1. **Executive Summary** (0.5 pages)
+1. **Abstract** (0.5 pages)
    - Business problem, approach, key findings, top recommendation
 
 2. **Business Context & Problem Statement** (1 page)
