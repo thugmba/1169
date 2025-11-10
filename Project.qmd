@@ -23,10 +23,17 @@ format:
 
 - 5-pages written report in PDF
 - 15-pages slide in PDF
+- 3 minute vide of your presentation
+  - Record a 3-minute video of your presentation
+  - Upload the video to your Google Drive
+  - Submit the URL of the video to iLearn
 
-**Presentation**
+## Deadline
 
-- Week 15: Submit written report and slide files
+**Week 15** - Submit 1) written report, 2) slide file, and 3) URL of the video
+
+## Presentation
+
 - Week 16: Five minutes(2 minutes Q&A)
 
 ---
