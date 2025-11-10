@@ -30,11 +30,11 @@ format:
 
 ## Deadline
 
-**Week 15** - Submit 1) written report, 2) slide file, and 3) URL of the video
+- **Week 15** - Submit 1) written report, 2) slide file, and 3) URL of the video
 
 ## Presentation
 
-- Week 16: Five minutes(2 minutes Q&A)
+- **Week 16**: Five minutes(2 minutes Q&A)
 
 ---
 
