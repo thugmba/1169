@@ -6,6 +6,7 @@ Prompt engineering is crafting precise, context-rich inputs to large language mo
 ## Course Materials
 
 - [CoT and Prompting Techniques](CoT.html)
+- [Operations](Operations/Operations.html)
 <!-- - [Image Model for Buisness](Image_Model_Lecture.html) -->
 
 ## Term Project

@@ -1,0 +1,37 @@
+Day,Station1_Output,Station2_Output,Station3_Output,Station4_Output,Station5_Output,Total_Units_Completed,Station1_Utilization,Station2_Utilization,Station3_Utilization,Station4_Utilization,Station5_Utilization,Shift_Hours
+1,912,760,760,760,760,760,79.2%,100.0%,72.7%,80.0%,61.5%,8
+2,936,760,760,760,760,760,81.3%,100.0%,72.7%,80.0%,61.5%,8
+3,888,741,741,741,741,741,77.5%,97.5%,70.9%,78.1%,59.9%,8
+4,960,760,760,760,760,760,83.3%,100.0%,72.7%,80.0%,61.5%,8
+5,944,752,752,752,752,752,82.1%,99.0%,71.6%,79.0%,60.6%,8
+6,920,760,760,760,760,760,80.2%,100.0%,72.7%,80.0%,61.5%,8
+7,904,754,754,754,754,754,78.8%,99.2%,71.8%,79.3%,60.8%,8
+8,928,758,758,758,758,758,80.8%,99.7%,72.3%,79.8%,61.2%,8
+9,896,745,745,745,745,745,78.1%,98.0%,71.1%,78.4%,60.1%,8
+10,952,760,760,760,760,760,82.9%,100.0%,72.7%,80.0%,61.5%,8
+11,880,733,733,733,733,733,76.7%,96.4%,69.9%,77.1%,59.2%,8
+12,912,760,760,760,760,760,79.2%,100.0%,72.7%,80.0%,61.5%,8
+13,936,760,760,760,760,760,81.3%,100.0%,72.7%,80.0%,61.5%,8
+14,920,760,760,760,760,760,80.2%,100.0%,72.7%,80.0%,61.5%,8
+15,904,751,751,751,751,751,78.8%,98.8%,71.6%,79.0%,60.6%,8
+16,944,760,760,760,760,760,82.1%,100.0%,72.7%,80.0%,61.5%,8
+17,888,738,738,738,738,738,77.5%,97.1%,70.4%,77.6%,59.5%,8
+18,928,760,760,760,760,760,80.8%,100.0%,72.7%,80.0%,61.5%,8
+19,896,748,748,748,748,748,78.1%,98.4%,71.3%,78.6%,60.3%,8
+20,912,760,760,760,760,760,79.2%,100.0%,72.7%,80.0%,61.5%,8
+
+Station_Capacities_Per_Hour:
+Station 1 (Component Prep): 120 units/hour
+Station 2 (Sub-Assembly): 95 units/hour
+Station 3 (Main Assembly): 110 units/hour
+Station 4 (Quality Check): 100 units/hour
+Station 5 (Packaging): 130 units/hour
+
+Additional_Information:
+- Operating 8-hour shifts per day
+- Each completed unit generates $15 profit margin
+- Current demand exceeds production capacity
+- Annual operating days: 250
+- Station 2 requires specialized equipment and trained operators
+- Average downtime per station: 2-3% (included in utilization figures)
+- Quality defect rate: 1.5% (quality issues addressed at Station 4)

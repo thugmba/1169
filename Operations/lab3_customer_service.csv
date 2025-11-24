@@ -1,0 +1,140 @@
+Customer_Segment,Order_Count_Q4,Average_Order_Value,On_Time_Delivery_Rate,Fill_Rate,Perfect_Order_Rate,Average_Cycle_Time_Hours,Complaints_Q4
+Enterprise,1240,8500,88%,94%,81%,38,45
+Mid_Market,2890,3200,85%,91%,78%,42,128
+Small_Business,5670,1200,80%,87%,74%,48,267
+Education,1450,2800,84%,89%,76%,46,89
+Government,890,6200,90%,96%,85%,36,28
+Healthcare,1120,4500,87%,92%,80%,40,52
+Retail_Partners,3240,2100,78%,85%,71%,52,398
+
+Order_Fulfillment_Metrics:
+Metric,Value,Target,Gap
+Overall_Fill_Rate,89%,95%,-6%
+Overall_On_Time_Delivery,82%,95%,-13%
+Overall_Perfect_Order_Rate,76%,92%,-16%
+Average_Order_Cycle_Time,46_hours,36_hours,+10_hours
+Same_Day_Ship_Rate,42%,60%,-18%
+Next_Day_Ship_Rate,71%,85%,-14%
+
+Perfect_Order_Components:
+Component,Pass_Rate,Primary_Failure_Reasons
+Complete_Order,88%,Stockouts (60%); Backorders (30%); Picking errors (10%)
+On_Time_Delivery,82%,Warehouse delays (38%); Carrier issues (28%); Stockouts (22%); Inventory errors (8%); Order errors (4%)
+Damage_Free,94%,Packaging inadequate (55%); Handling damage (30%); Carrier damage (15%)
+Documentation_Accurate,97%,System errors (60%); Manual entry errors (40%)
+Invoiced_Correctly,99%,Pricing errors (70%); Quantity errors (30%)
+
+Late_Delivery_Root_Causes:
+Cause,Percentage,Orders_Affected_Q4,Estimated_Cost_Impact
+Warehouse_Bottleneck,38%,634,285300
+Carrier_Performance,28%,467,140100
+Stockouts_Requiring_Backorder,22%,367,220200
+Inventory_Inaccuracy,8%,133,53200
+Order_Processing_Errors,4%,67,20100
+
+Customer_Complaint_Analysis:
+Complaint_Type,Count_Q4,Percent,Resolution_Time_Days,Customer_Satisfaction_Impact
+Late_Delivery,456,45%,3.2,High
+Partial_Shipment,304,30%,5.8,High
+Damaged_Goods,152,15%,4.1,Medium
+Wrong_Item_Shipped,51,5%,6.2,High
+Poor_Communication,44,4.3%,2.1,Medium
+Invoicing_Error,7,0.7%,1.5,Low
+
+Response_Time_Metrics:
+Metric,Current,Target,Status
+Order_Acknowledgment,4_hours,1_hour,Needs_Improvement
+Shipment_Notification,12_hours,2_hours,Needs_Improvement
+Delivery_Tracking_Updates,Real_time,Real_time,Meeting_Target
+Customer_Service_Response,18_hours,4_hours,Needs_Improvement
+Issue_Resolution,4.2_days,2_days,Needs_Improvement
+
+Customer_Satisfaction_Scores:
+Segment,NPS_Score,CSAT_Score,Trend,Key_Drivers
+Enterprise,42,7.8,Declining,Reliability; Account management
+Mid_Market,38,7.4,Stable,Price; On-time delivery
+Small_Business,31,6.9,Declining,Ease of ordering; Quick delivery
+Education,45,8.1,Stable,Product knowledge; Flexibility
+Government,52,8.5,Improving,Compliance; Documentation
+Healthcare,47,8.2,Stable,Urgency handling; Accuracy
+Retail_Partners,28,6.5,Declining,Speed; Fill rate; Cost
+
+Lost_Customer_Analysis:
+Quarter,Customers_Lost,Primary_Reason,Estimated_Annual_Revenue_Lost
+Q1_2024,12,Service issues,425000
+Q2_2024,18,Pricing,385000
+Q3_2024,22,Service issues,612000
+Q4_2024,28,Service issues,823000
+Total_2024,80,,2245000
+
+Competitive_Comparison:
+Metric,GlobalTech,Competitor_A,Competitor_B,Industry_Leader
+Fill_Rate,89%,96%,94%,98%
+On_Time_Delivery,82%,94%,91%,97%
+Perfect_Order_Rate,76%,89%,87%,94%
+Customer_Satisfaction,7.5,8.2,8.0,8.9
+Average_Cycle_Time,46_hours,32_hours,36_hours,24_hours
+
+Order_Accuracy_Details:
+Issue_Type,Occurrences_Q4,Percent_Of_Orders,Root_Cause
+Incorrect_Quantity,312,1.9%,Picking error
+Wrong_Product,187,1.1%,SKU confusion
+Missing_Items,445,2.7%,Partial picks due to stockouts
+Damaged_In_Transit,234,1.4%,Packaging issues
+Wrong_Address,89,0.5%,Data entry error
+Duplicate_Shipment,23,0.1%,System glitch
+
+Delivery_Performance_By_Carrier:
+Carrier,Percent_Of_Volume,On_Time_Rate,Damage_Rate,Cost_Per_Shipment
+Carrier_A,45%,86%,2.1%,18.50
+Carrier_B,30%,79%,3.8%,16.20
+Carrier_C,15%,91%,1.2%,22.10
+Carrier_D,10%,75%,5.1%,15.80
+
+Geographic_Performance:
+Region,Orders_Q4,On_Time_Rate,Fill_Rate,Primary_DC_Serving
+Northeast,4850,84%,91%,DC1
+Southeast,3920,78%,86%,DC2
+Midwest,4280,85%,90%,DC3
+Southwest,2340,80%,87%,DC3
+West_Coast,1110,76%,85%,DC1_or_DC3
+
+Seasonal_Pattern_Analysis:
+Month,Order_Volume,On_Time_Rate,Fill_Rate,Notes
+January,2340,79%,86%,Post-holiday slowdown
+February,2180,81%,88%,Budget season starts
+March,2890,84%,90%,Q1 push
+April,2650,83%,89%,Normal
+May,2720,85%,90%,Normal
+June,3120,86%,91%,Mid-year purchases
+July,2890,84%,89%,Summer slowdown
+August,3450,82%,87%,Back-to-school prep
+September,4120,80%,85%,Peak season start
+October,4680,78%,84%,Holiday prep
+November,5230,75%,82%,Holiday peak
+December,3910,77%,83%,Year-end rush
+
+Financial_Impact:
+Lost_Sales_Due_To_Stockouts: 1486000
+Lost_Customers_Revenue_Impact: 2245000
+Cost_Of_Rush_Shipments: 287000
+Cost_Of_Returns_Processing: 195000
+Customer_Goodwill_Adjustments: 134000
+Total_Quality_Costs_Q4: 4347000
+
+Improvement_Opportunities_Identified:
+Opportunity,Current_Performance,Target,Estimated_Annual_Benefit
+Reduce_Stockouts,89%_fill_rate,95%_fill_rate,890000
+Improve_Warehouse_Efficiency,46h_cycle_time,36h_cycle_time,430000
+Enhance_Carrier_Performance,82%_on_time,90%_on_time,340000
+Reduce_Picking_Errors,2.8%_error_rate,1%_error_rate,285000
+Better_Demand_Forecasting,Current_accuracy,+10%_accuracy,520000
+Improve_Packaging,6%_damage_rate,2%_damage_rate,195000
+
+Technology_Gaps:
+System,Current_State,Pain_Points,Investment_Needed
+Order_Management,Legacy_system_with_customizations,Slow; Integration issues; Limited visibility,450000
+Warehouse_Management,Modern_but_underutilized,Staff not fully trained; Custom workflows broken,125000
+Transportation_Management,Manual_carrier_selection,No optimization; Limited tracking,280000
+Customer_Portal,Basic_functionality,No self-service; Poor mobile experience,180000
+Analytics_Platform,Spreadsheet_based,No real-time visibility; Manual reporting,220000

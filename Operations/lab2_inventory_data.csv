@@ -1,0 +1,122 @@
+Product_Category,Month,Units_Sold,Unit_Cost,Current_Inventory,Lead_Time_Days,Lead_Time_StdDev,Ordering_Cost,Holding_Cost_Percent,Stockouts_This_Month,Target_Service_Level
+Smartphones,1,245,450,380,14,3,150,25%,0,95%
+Smartphones,2,267,450,412,14,3,150,25%,1,95%
+Smartphones,3,298,450,356,14,3,150,25%,2,95%
+Smartphones,4,231,450,445,14,3,150,25%,0,95%
+Smartphones,5,256,450,421,14,3,150,25%,0,95%
+Smartphones,6,312,450,398,14,3,150,25%,2,95%
+Smartphones,7,289,450,367,14,3,150,25%,1,95%
+Smartphones,8,278,450,401,14,3,150,25%,0,95%
+Smartphones,9,334,450,298,14,3,150,25%,3,95%
+Smartphones,10,401,450,267,14,3,150,25%,4,95%
+Smartphones,11,478,450,189,14,3,150,25%,5,95%
+Smartphones,12,523,450,134,14,3,150,25%,6,95%
+Laptops,1,178,850,290,21,5,200,22%,0,95%
+Laptops,2,192,850,312,21,5,200,22%,1,95%
+Laptops,3,201,850,267,21,5,200,22%,1,95%
+Laptops,4,165,850,334,21,5,200,22%,0,95%
+Laptops,5,189,850,289,21,5,200,22%,0,95%
+Laptops,6,213,850,312,21,5,200,22%,2,95%
+Laptops,7,198,850,298,21,5,200,22%,1,95%
+Laptops,8,187,850,276,21,5,200,22%,0,95%
+Laptops,9,298,850,245,21,5,200,22%,3,95%
+Laptops,10,312,850,198,21,5,200,22%,3,95%
+Laptops,11,389,850,156,21,5,200,22%,5,95%
+Laptops,12,423,850,98,21,5,200,22%,7,95%
+Tablets,1,156,320,520,10,2,120,25%,0,95%
+Tablets,2,167,320,498,10,2,120,25%,0,95%
+Tablets,3,189,320,467,10,2,120,25%,1,95%
+Tablets,4,145,320,512,10,2,120,25%,0,95%
+Tablets,5,178,320,489,10,2,120,25%,0,95%
+Tablets,6,201,320,456,10,2,120,25%,1,95%
+Tablets,7,187,320,445,10,2,120,25%,0,95%
+Tablets,8,234,320,398,10,2,120,25%,2,95%
+Tablets,9,312,320,289,10,2,120,25%,3,95%
+Tablets,10,289,320,267,10,2,120,25%,2,95%
+Tablets,11,267,320,312,10,2,120,25%,1,95%
+Tablets,12,245,320,398,10,2,120,25%,0,95%
+Headphones,1,567,45,1250,7,1,80,30%,0,95%
+Headphones,2,612,45,1189,7,1,80,30%,1,95%
+Headphones,3,645,45,1134,7,1,80,30%,2,95%
+Headphones,4,523,45,1289,7,1,80,30%,0,95%
+Headphones,5,589,45,1245,7,1,80,30%,0,95%
+Headphones,6,678,45,1167,7,1,80,30%,3,95%
+Headphones,7,601,45,1098,7,1,80,30%,1,95%
+Headphones,8,634,45,1056,7,1,80,30%,2,95%
+Headphones,9,723,45,967,7,1,80,30%,4,95%
+Headphones,10,798,45,834,7,1,80,30%,6,95%
+Headphones,11,934,45,712,7,1,80,30%,8,95%
+Headphones,12,1089,45,567,7,1,80,30%,12,95%
+Smart_Watches,1,89,280,210,18,4,140,24%,0,95%
+Smart_Watches,2,98,280,198,18,4,140,24%,1,95%
+Smart_Watches,3,112,280,187,18,4,140,24%,1,95%
+Smart_Watches,4,76,280,223,18,4,140,24%,0,95%
+Smart_Watches,5,94,280,201,18,4,140,24%,0,95%
+Smart_Watches,6,118,280,178,18,4,140,24%,2,95%
+Smart_Watches,7,103,280,189,18,4,140,24%,1,95%
+Smart_Watches,8,97,280,201,18,4,140,24%,0,95%
+Smart_Watches,9,134,280,156,18,4,140,24%,2,95%
+Smart_Watches,10,156,280,123,18,4,140,24%,3,95%
+Smart_Watches,11,189,280,89,18,4,140,24%,5,95%
+Smart_Watches,12,223,280,45,18,4,140,24%,7,95%
+Cameras,1,67,520,145,28,6,180,20%,0,95%
+Cameras,2,73,520,134,28,6,180,20%,0,95%
+Cameras,3,81,520,123,28,6,180,20%,1,95%
+Cameras,4,58,520,156,28,6,180,20%,0,95%
+Cameras,5,69,520,145,28,6,180,20%,0,95%
+Cameras,6,89,520,134,28,6,180,20%,1,95%
+Cameras,7,76,520,128,28,6,180,20%,0,95%
+Cameras,8,71,520,139,28,6,180,20%,0,95%
+Cameras,9,112,520,98,28,6,180,20%,2,95%
+Cameras,10,134,520,78,28,6,180,20%,3,95%
+Cameras,11,167,520,56,28,6,180,20%,4,95%
+Cameras,12,198,520,23,28,6,180,20%,6,95%
+Gaming_Consoles,1,92,380,178,21,5,160,23%,0,95%
+Gaming_Consoles,2,87,380,189,21,5,160,23%,0,95%
+Gaming_Consoles,3,94,380,176,21,5,160,23%,0,95%
+Gaming_Consoles,4,78,380,201,21,5,160,23%,0,95%
+Gaming_Consoles,5,101,380,187,21,5,160,23%,1,95%
+Gaming_Consoles,6,134,380,156,21,5,160,23%,2,95%
+Gaming_Consoles,7,178,380,123,21,5,160,23%,3,95%
+Gaming_Consoles,8,156,380,134,21,5,160,23%,2,95%
+Gaming_Consoles,9,198,380,98,21,5,160,23%,4,95%
+Gaming_Consoles,10,234,380,67,21,5,160,23%,5,95%
+Gaming_Consoles,11,312,380,34,21,5,160,23%,8,95%
+Gaming_Consoles,12,389,380,12,21,5,160,23%,11,95%
+Smart_Home_Devices,1,123,95,450,12,3,100,28%,0,95%
+Smart_Home_Devices,2,145,95,412,12,3,100,28%,1,95%
+Smart_Home_Devices,3,167,95,378,12,3,100,28%,1,95%
+Smart_Home_Devices,4,98,95,467,12,3,100,28%,0,95%
+Smart_Home_Devices,5,134,95,423,12,3,100,28%,0,95%
+Smart_Home_Devices,6,178,95,389,12,3,100,28%,2,95%
+Smart_Home_Devices,7,156,95,367,12,3,100,28%,1,95%
+Smart_Home_Devices,8,189,95,334,12,3,100,28%,2,95%
+Smart_Home_Devices,9,267,95,256,12,3,100,28%,4,95%
+Smart_Home_Devices,10,312,95,189,12,3,100,28%,5,95%
+Smart_Home_Devices,11,389,95,123,12,3,100,28%,7,95%
+Smart_Home_Devices,12,478,95,67,12,3,100,28%,10,95%
+
+Additional_Context:
+Warehouse_Capacity_CubicFeet: 15000
+Maximum_Total_Inventory_Value: 850000
+Working_Days_Per_Month: 22
+Current_Month: Month 13 (January of new year)
+Previous_Year_Total_Revenue: 4250000
+Average_Profit_Margin: 18%
+
+Product_Dimensions_and_Notes:
+Smartphones: 0.5 cu ft per unit; High demand volatility; New models released quarterly
+Laptops: 2.0 cu ft per unit; B2B orders spike in August-September (corporate refresh cycles)
+Tablets: 1.2 cu ft per unit; Declining market trend but stable customer base
+Headphones: 0.3 cu ft per unit; High volume; Seasonal spikes for holidays and back-to-school
+Smart_Watches: 0.4 cu ft per unit; Growing market; Influenced by tech releases
+Cameras: 1.5 cu ft per unit; Specialist market; Professional buyers less seasonal
+Gaming_Consoles: 2.5 cu ft per unit; Extreme holiday seasonality; Supply often constrained
+Smart_Home_Devices: 0.8 cu ft per unit; Fast-growing category; Promotional sensitivity high
+
+Key_Business_Constraints:
+- Supplier minimum order quantities (MOQ) typically 50-100 units depending on product
+- Cash flow concerns: CFO wants to reduce total inventory value by 15%
+- Customer expectation: 95% fill rate is industry standard
+- Competitor has 98% fill rate on smartphones and laptops
+- Stockout cost estimated at 2x profit margin (immediate lost sale + customer goodwill)
