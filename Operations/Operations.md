@@ -326,11 +326,11 @@ In the upcoming lab sessions, you will:
 
 **Lab 2:** Use AI to optimize inventory levels for a multi-product retail scenario with seasonal demand
 - [Lab 2](lab2_inventory_optimization.html)
-- [Dataset](lab2_sales_data.csv)
+- [Dataset](lab2_inventory_data.csv)
 
 **Lab 3:** Conduct comprehensive operations analysis and present recommendations
 - [Lab 3](lab3_operations_analysis.html)
-- [Dataset](lab3_operations_data.csv)
+- [Dataset](lab3_customer_service.csv)
 
 **What to Review:**
 - Formulas for throughput, cycle time, and capacity utilization
