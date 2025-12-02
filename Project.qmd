@@ -267,19 +267,20 @@ Monthly Revenue Data (2024):
 
 ## Report Structure (5 Pages)
 
-1. **Abstract** (0.5 pages)
+1. **Abstract** (About 150 words)
    - Business problem, approach, key findings, top recommendation
 
-2. **Business Context & Problem Statement** (1 page)
+2. **Introduction**
+   - Business Context & Problem Statement
    - Company background, industry analysis, specific challenge
 
-3. **Methodology** (1 page)
+3. **Data and Methods** 
    - Prompt engineering approach, data sources, iteration process
 
-4. **Findings & Analysis** (1.5 pages)
+4. **Results**
    - LLM outputs, iteration log highlights, key insights
 
-5. **Recommendations & Conclusion** (1 page)
+5. **Conclusion**
    - Actionable recommendations, limitations, ethical considerations, future work
 
 ---
