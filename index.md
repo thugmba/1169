@@ -7,6 +7,7 @@ Prompt engineering is crafting precise, context-rich inputs to large language mo
 
 - [CoT and Prompting Techniques](CoT.html)
 - [Operations](Operations/Operations.html)
+- [HR & Organizational Behavior](HR/HR_Course_Lecture.html)
 <!-- - [Image Model for Buisness](Image_Model_Lecture.html) -->
 
 ## Term Project
