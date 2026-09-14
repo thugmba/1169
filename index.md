@@ -5,6 +5,8 @@ Prompt engineering is crafting precise, context-rich inputs to large language mo
 
 ## Course Materials
 
+- [Course Curriculum & Blueprint](1169.md)
+- [Student Workbook & Lab Manual](Business_AI_Tools_Student_Worksheets.docx)
 - [CoT and Prompting Techniques](CoT.html)
 - [Operations](Operations/Operations.html)
 - [HR & Organizational Behavior](HR/HR_Course_Lecture.html)
