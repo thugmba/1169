@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Session 4.4: Building Your Professional Prompt Portfolio - Lecture Notes</title>
+<style>
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+  
+  @media print {
+    html, body {
+      width: 16in;
+      height: 9in;
+      margin: 0;
+      padding: 0;
+      background-color: #FFFFFF !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .slide {
+      margin: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    background-color: #4A5568;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+  }
+
+  /* Slide Master Fixed Frame: 16in x 9in */
+  .slide {
+    width: 16in;
+    height: 9in;
+    position: relative;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Harvard Crimson Accent Line */
+  .crimson-line {
+    width: 100%;
+    height: 4px;
+    background-color: #991B1B;
+    margin-top: 8px;
+  }
+
+  /* Header Area: top: 0.55in; height: 1.35in; left: 0.8in; right: 0.8in; */
+  .slide-header {
+    position: absolute;
+    top: 0.55in;
+    left: 0.8in;
+    right: 0.8in;
+    height: 1.35in;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748B;
+  }
+
+  .header-category {
+    color: #991B1B;
+  }
+
+  .slide-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-top: 4px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-subtitle {
+    font-size: 22px;
+    color: #475569;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Body Content Area: top: 2.15in; bottom: 1.05in; left: 0.8in; right: 0.8in; (Height: 5.8in) */
+  .slide-body {
+    position: absolute;
+    top: 2.15in;
+    bottom: 1.05in;
+    left: 0.8in;
+    right: 0.8in;
+    overflow: hidden;
+  }
+
+  /* Footer Area: bottom: 0.45in; height: 0.45in; left: 0.8in; right: 0.8in; */
+  .slide-footer {
+    position: absolute;
+    bottom: 0.45in;
+    left: 0.8in;
+    right: 0.8in;
+    height: 0.45in;
+    border-top: 1px solid #CBD5E1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #64748B;
+  }
+
+  .footer-left {
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .footer-center {
+    font-style: italic;
+    color: #64748B;
+  }
+
+  .footer-right {
+    font-weight: 700;
+    color: #991B1B;
+  }
+
+  /* Grid Layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35in;
+    height: 100%;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3in;
+    height: 100%;
+  }
+
+  .grid-60-40 {
+    display: grid;
+    grid-template-columns: 5.8fr 4.2fr;
+    gap: 0.35in;
+    height: 100%;
+  }
+
+  /* Card Component with Balanced 4-Sided Border */
+  .content-card {
+    background-color: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 0.22in 0.28in;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .content-card.crimson-accent {
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+  }
+
+  .content-card.blue-accent {
+    background-color: #F0F9FF;
+    border: 1px solid #BAE6FD;
+  }
+
+  .card-label {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #991B1B;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .card-body {
+    font-size: 20px;
+    color: #1E293B;
+    line-height: 1.45;
+  }
+
+  .card-list {
+    margin-top: 6px;
+    padding-left: 24px;
+  }
+
+  .card-list li {
+    font-size: 20px;
+    color: #1E293B;
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+
+  .highlight-badge {
+    display: inline-block;
+    background-color: #991B1B;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    align-self: flex-start;
+  }
+
+  /* Code / Prompt Blocks */
+  .prompt-box {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    border: 1px solid #334155;
+    margin: 6px 0;
+  }
+
+  .prompt-box.weak {
+    background-color: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #F87171;
+  }
+
+  .prompt-box.strong {
+    background-color: #F0FDF4;
+    color: #166534;
+    border: 1px solid #86EFAC;
+  }
+
+  /* Key Metrics & Timeline */
+  .metric-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .metric-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+
+  .metric-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #991B1B;
+  }
+
+  .metric-desc {
+    font-size: 18px;
+    color: #334155;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Dedicated A vs B Showdown Slide Styles (Compact & Anti-Overlap Mandate) */
+  .showdown-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.22in;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .showdown-card {
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .showdown-card.cool {
+    background-color: #F8FAFC;
+    border: 2px solid #2563EB;
+  }
+
+  .showdown-card.warm {
+    background-color: #FEF2F2;
+    border: 2px solid #DC2626;
+  }
+
+  .showdown-badge {
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    align-self: flex-start;
+    margin-bottom: 3px;
+  }
+
+  .showdown-badge.cool {
+    background-color: #2563EB;
+  }
+
+  .showdown-badge.warm {
+    background-color: #DC2626;
+  }
+
+  .vs-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 0.45in;
+  }
+
+  .vs-line {
+    flex: 1;
+    width: 2px;
+    background-color: #CBD5E1;
+  }
+
+  .vs-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #0F172A;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 6px 0;
+  }
+
+  .pillar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 3px 0;
+  }
+
+  .pillar-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+
+  .pillar-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1px;
+  }
+
+  .pillar-desc {
+    font-size: 13.5px;
+    color: #334155;
+    line-height: 1.25;
+  }
+
+  .showdown-footer-tag {
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .showdown-footer-tag.cool {
+    background-color: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+  }
+
+  .showdown-footer-tag.warm {
+    background-color: #FEF2F2;
+    color: #B91C1C;
+    border: 1px solid #FECACA;
+  }
+
+  .hybrid-workflow-bar {
+    margin-top: 8px;
+    background-color: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 5px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14.5px;
+    color: #0F172A;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title & Course Framework Cover -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Executive Curriculum - Applied AI in Business</span>
+      <span>3-Hour Executive Masterclass</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Business AI Tools: Effective ChatGPT Communication</div>
+    <div class="slide-subtitle">Module 4: Everyday Workflows &amp; Your AI Portfolio - Session 4.4 Lecture Notes</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <span class="highlight-badge">Session Overview</span>
+        <div class="card-title">Session 4.4: Building Your Professional Prompt Portfolio</div>
+        <div class="card-body">
+          <p style="margin-bottom: 12px;"><strong>Target Academic Audience:</strong> Undergraduate & Graduate (MBA) Business Students.</p>
+          <p style="margin-bottom: 12px;"><strong>Core Pedagogical Premise:</strong> Assemble a ready-to-use collection of 5 business prompts to show in job interviews or use at work.</p>
+          <ul class="card-list">
+            <li><strong>Duration:</strong> 3 Hours (180 Total Contact Minutes)</li>
+            <li><strong>Delivery Ratio:</strong> 1:2 (50 Min Lecture + 120 Min Hands-On Labs)</li>
+            <li><strong>Public Practice Data:</strong> OpenAI Official Prompt Engineering Guide - Free public guide and documentation for industry-standard prompt formatting and best practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card crimson-accent">
+        <span class="highlight-badge">The 3-Hour Session Rhythm</span>
+        <div class="card-title">Curriculum Architecture & Timetable</div>
+        <div class="metric-stack">
+          <div class="metric-item">
+            <div class="metric-title">Hour 1 (50 Min): Concept Lecture & Demonstration</div>
+            <div class="metric-desc">Industry Documentation Standards for Prompt Assets and The 4 Mandatory Anatomy Pillars of a Production Prompt Card, enterprise operational risks, and live prompt grounding.</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-title">Hour 2 (50 Min): Guided Lab (Exercise 1)</div>
+            <div class="metric-desc">Basic - 5 Standardized Production Prompt Cards: Step-by-step audit protocol using live business data sources.</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-title">Hour 3 (50 Min): Applied Business Challenge (Exercise 2)</div>
+            <div class="metric-desc">Advanced - Portfolio Defense &amp; Recruiter Simulation: Unstructured operational dilemma and executive decision deliverables.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 1 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: Session Blueprint & Learning Objectives -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Pedagogical Framework</span>
+      <span>Session Architecture</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Session Blueprint & Three Executive Learning Objectives</div>
+    <div class="slide-subtitle">Bridging theoretical prompt mechanics with organizational productivity workflows</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="content-card">
+        <div class="card-label">Objective 1 - Foundations</div>
+        <div class="card-title">Industry Documentation Standards</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Master the underlying principles and components:</p>
+          <ul class="card-list">
+            <li>Understand computational mechanics and information boundaries.</li>
+            <li>Eliminate conversational ambiguity in business instructions.</li>
+            <li>Recognize model interpretation patterns across business functions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Objective 2 - Strategy</div>
+        <div class="card-title">The 4 Mandatory Anatomy Pillars </div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Deploy structured prompt engineering frameworks:</p>
+          <ul class="card-list">
+            <li>Establish explicit role, context, and structural boundaries.</li>
+            <li>Apply modular prompt architectures to prevent instruction drift.</li>
+            <li>Standardize repeatable team templates for recurring office tasks.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card crimson-accent">
+        <div class="card-label">Objective 3 - Execution</div>
+        <div class="card-title">Audited Business Delivery</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Enforce quality control and workplace audit readiness:</p>
+          <ul class="card-list">
+            <li>Audit model outputs against hard facts and source data.</li>
+            <li>Resolve multi-issue operational bottlenecks with AI support.</li>
+            <li>Deliver boardroom-ready briefs and verifiable action steps.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 2 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 3: Part 1 - Foundations -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Theoretical Foundations (Part 1)</span>
+      <span>Concept Mechanics</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Industry Documentation Standards for Prompt Assets</div>
+    <div class="slide-subtitle">Translating foundational principles into scalable organizational execution</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <div class="card-label">Foundational Mechanism</div>
+        <div class="card-title">Operational Architecture</div>
+        <div class="card-body">
+          <p style="margin-bottom: 12px;">Leading AI consultancies do not save prompts as messy chat logs; they document them like corporate software assets. An enterprise Prompt Specification Card allows any manager or intern to run the prompt safely....</p>
+          <ul class="card-list">
+            <li><strong>Core Driver:</strong> Precise contextual parameters eliminate model guesswork.</li>
+            <li><strong>Information Hygiene:</strong> Explicit delimiters protect source data integrity.</li>
+            <li><strong>Domain Calibration:</strong> Setting professional role constraints aligns vocabulary.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Management Implications</div>
+        <div class="card-title">Organizational Productivity Impact</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">The Cost of Unstructured Prompts</div>
+              <div class="metric-desc">Vague instructions produce generic drafts requiring multiple cycles of manual editing, wasting hours of senior executive time.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">First-Try Workplace Deliverables</div>
+              <div class="metric-desc">Structured prompt architecture guarantees workplace-ready outputs on the initial attempt, accelerating cycle times by 3x to 5x.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Audit Governance Rule</div>
+              <div class="metric-desc">Treat AI as a junior assistant: Always verify numerical claims, policy dates, and regulatory statements against primary source records.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 3 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 4: Part 2 - Dedicated A vs B Showdown Slide -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Strategic Benchmark Showdown (Part 2)</span>
+      <span>Decision Framework Showdown</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">The 4 Mandatory Anatomy Pillars of a Production Prompt Card: Strategic Showdown</div>
+    <div class="slide-subtitle">Comparative evaluation of contrasting business approaches and execution frameworks</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="showdown-grid">
+      <!-- SYSTEM A: Traditional / Conventional Approach (Cool Blue) -->
+      <div class="showdown-card cool">
+        <div>
+          <span class="showdown-badge cool">Framework A: Unstructured / Baseline</span>
+          <div class="card-title" style="margin-top: 4px; color: #1E3A8A;">Conventional Approach</div>
+          <p style="font-size: 15px; color: #2563EB; font-weight: 700; margin-bottom: 4px;">Ad-Hoc & Unconstrained Execution</p>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 1: Input Specification</div>
+              <div class="pillar-desc">Conversational prompts lacking explicit business background, role, or formatting boundaries.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 2: Output Control</div>
+              <div class="pillar-desc">Model generates generic, platitude-heavy drafts that miss key commercial nuances and data points.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 3: Failure Mode</div>
+              <div class="pillar-desc">Requires 2 to 4 rounds of tedious follow-up prompting to extract acceptable business formats.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag cool">LIMITATION: High Review Overhead & Inconsistent Results</div>
+      </div>
+
+      <!-- VS DIVIDER -->
+      <div class="vs-divider">
+        <div class="vs-line"></div>
+        <div class="vs-badge">VS</div>
+        <div class="vs-line"></div>
+      </div>
+
+      <!-- SYSTEM B: Engineered / Structured Approach (Warm Crimson) -->
+      <div class="showdown-card warm">
+        <div>
+          <span class="showdown-badge warm">Framework B: Modular Architecture</span>
+          <div class="card-title" style="margin-top: 4px; color: #991B1B;">Engineered Execution</div>
+          <p style="font-size: 15px; color: #DC2626; font-weight: 700; margin-bottom: 4px;">Role, Context, Constraints, Schema</p>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 1: Input Specification</div>
+              <div class="pillar-desc">Structured parameters with explicit delimited data, personas, and negative constraints.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 2: Output Control</div>
+              <div class="pillar-desc">Deterministic formatting schemas (bullet counts, tables, tone) strictly enforced.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 3: Operational Benefit</div>
+              <div class="pillar-desc">Delivers executive-ready deliverables on initial attempt, reducing editing time by 80%.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag warm">ADVANTAGE: Repeatable, First-Try Commercial Quality</div>
+      </div>
+    </div>
+
+    <!-- Hybrid Workflow Bar -->
+    <div class="hybrid-workflow-bar">
+      <span style="font-weight: 700; color: #991B1B;">Operational Takeaway:</span>
+      <span>Transitioning from ad-hoc chatting to modular prompt engineering converts generative models into enterprise-grade productivity engines.</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 4 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 5: Part 3 - Enterprise Risk & Case Study -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Enterprise Governance & Risk (Part 3)</span>
+      <span>Risk Mitigation Protocol</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Interview Demonstration Strategy for Business Students</div>
+    <div class="slide-subtitle">Safeguarding organizational accuracy, compliance, and strategic alignment</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card crimson-accent">
+        <div class="card-label">Risk Analysis & Case Study</div>
+        <div class="card-title">Corporate Exposure & Governance</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">How to present your portfolio to corporate recruiters during interviews: Walking through your prompt engineering process, demonstrating before-and-after results, and explaining your verification safeguards.
+
+    ![Session 4.4 Conceptual Framework: The Standardized Prompt Specific...</p>
+          <ul class="card-list">
+            <li><strong>Hallucination Liability:</strong> Courts hold enterprises strictly accountable for statements generated by customer-facing AI agents.</li>
+            <li><strong>Privacy & IP Protection:</strong> Never ingest sensitive proprietary formulas, customer PII, or non-public financial records into public models.</li>
+            <li><strong>Negative Constraints:</strong> Explicitly instruct the model what NOT to do to enforce compliance boundaries.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Executive Guardrails</div>
+        <div class="card-title">Three Mandatory Workplace Defenses</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 1: Grounded Source Ingestion</div>
+              <div class="metric-desc">Always enclose verified primary datasets inside clear text delimiters (### or ---) so the model synthesizes known facts rather than guessing.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 2: Explicit Refusal Directive</div>
+              <div class="metric-desc">Mandate in the prompt: "If the requested metric is not found in the provided source text, state 'Information not available in source data'."</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 3: Human Verification Sign-Off</div>
+              <div class="metric-desc">Enforce a strict managerial review protocol for all public, financial, legal, and board-level documents before external dispatch.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 5 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 6: Part 4 - Dedicated A vs B Showdown Slide (Prompt Comparison) -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Live Demonstration Showdown (Part 4)</span>
+      <span>Prompt Architecture Comparison</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Prompt Architecture: Naive Request vs. Engineered Solution</div>
+    <div class="slide-subtitle">Side-by-side diagnostic benchmark demonstrating the operational impact of structural constraints</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="showdown-grid">
+      <!-- APPROACH A: Naive Request (Warm Red) -->
+      <div class="showdown-card warm">
+        <div>
+          <span class="showdown-badge warm">Approach A: Naive Request (Weak)</span>
+          <div class="prompt-box weak" style="font-size: 15px; padding: 6px 10px; margin: 4px 0 6px 0;">Here is a prompt I made: &quot;Act as a market researcher and summarize this industry report in 3 bullets.&quot;</div>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 1: Structural Flaws</div>
+              <div class="pillar-desc">Undocumented, fragile, and unimpressive to employers. It looks like casual chatting rather than an engineered corporate workflow asset.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 2: Output Characteristic</div>
+              <div class="pillar-desc">Rambling introductory platitudes, inconsistent schemas, and absence of actionable business next steps.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 3: Enterprise Result</div>
+              <div class="pillar-desc">Unusable draft that requires complete manual rewriting by human staff.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag warm">RESULT: Unusable Draft Requiring Manual Revision</div>
+      </div>
+
+      <!-- VS DIVIDER -->
+      <div class="vs-divider">
+        <div class="vs-line"></div>
+        <div class="vs-badge">VS</div>
+        <div class="vs-line"></div>
+      </div>
+
+      <!-- APPROACH B: Engineered Solution (Cool Green) -->
+      <div class="showdown-card cool" style="border-color: #16A34A; background-color: #F0FDF4;">
+        <div>
+          <span class="showdown-badge" style="background-color: #16A34A;">Approach B: Engineered Architecture (Strong)</span>
+          <div class="prompt-box strong" style="font-size: 14px; padding: 6px 10px; margin: 4px 0 6px 0; line-height: 1.3;">### PROMPT SPECIFICATION CARD: EXECUTIVE DATA SYNTHESIZER v1.2
+    - Target Business Role: FP&amp;A Lead / Operations Chief of Staff
+    - Business Objective: Transform raw tabular operational data into an executive exception brief for C-suite decision-makers.
+    --- MASTER PROMPT TEMPLATE ---
+    Role: Senior Operations Director.
+[... constrained specifications ...]</div>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 1: Structural Success</div>
+              <div class="pillar-desc">Represents a complete enterprise-grade software asset with master parameters, failure boundaries, and human sign-off checklists suitable for</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 2: Output Characteristic</div>
+              <div class="pillar-desc">Precise schema adherence, executive tone, and zero conversational filler.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 3: Enterprise Result</div>
+              <div class="pillar-desc">Immediate workplace-ready deliverable on the very first prompt execution.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag" style="background-color: #DCFCE7; color: #166534; border: 1px solid #BBF7D0;">RESULT: Workplace-Ready on First Generation Attempt</div>
+      </div>
+    </div>
+
+    <!-- Synthesis Takeaway Bar -->
+    <div class="hybrid-workflow-bar">
+      <span style="font-weight: 700; color: #991B1B;">Takeaway:</span>
+      <span>Explicit constraints and schemas eliminate conversational pleasantries and guarantee repeatable executive quality.</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 6 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 7: Hour 2 Guided Lab - Exercise 1 -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 2 - Guided Lab Protocol (50 Minutes)</span>
+      <span>Foundational Practice (Exercise 1)</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Guided Lab: Basic - 5 Standardized Production Prompt Cards</div>
+    <div class="slide-subtitle">Public Dataset: OpenAI Official Prompt Engineering Guide - Free public guide and documentation for industry-standard prompt formatting and best practices.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-60-40">
+      <div class="content-card">
+        <div class="card-label">Step-by-Step Lab Execution Protocol</div>
+        <div class="card-title">Guided Lab Implementation Steps</div>
+        <div class="card-body">
+          <ol class="card-list" style="padding-left: 22px;">
+            <li style="margin-bottom: 10px;"><strong>Step 1 (Data Inspection):</strong> Access the public business dataset and extract the target sample records requested in the exercise scenario.</li>
+            <li style="margin-bottom: 10px;"><strong>Step 2 (Baseline Execution):</strong> Deploy an unconstrained baseline prompt and observe the limitations in schema control and domain precision.</li>
+            <li style="margin-bottom: 10px;"><strong>Step 3 (Engineered Architecture):</strong> In a fresh chat window, deploy the modular prompt architecture with explicit role, delimiters, and schema bounds.</li>
+            <li style="margin-bottom: 10px;"><strong>Step 4 (Audit & Scoring):</strong> Compare Output A vs. Output B across Usefulness, Accuracy, and Executive Voice, recording findings in the Student Worksheet.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Student Deliverable & Scorecard</div>
+        <div class="card-title">Prompt Audit Matrix</div>
+        <div class="card-body">
+          <table style="width: 100%; border-collapse: collapse; font-size: 17px; margin-top: 6px;">
+            <thead>
+              <tr style="background-color: #E2E8F0; text-align: left;">
+                <th style="padding: 8px; border: 1px solid #CBD5E1;">Evaluation Metric</th>
+                <th style="padding: 8px; border: 1px solid #CBD5E1;">Naive</th>
+                <th style="padding: 8px; border: 1px solid #CBD5E1;">Engineered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;"><strong>Operational Usefulness</strong></td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;">1 - 2 / 5</td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">4 - 5 / 5</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;"><strong>Factual Accuracy</strong></td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;">2 - 3 / 5</td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">5 / 5</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;"><strong>Executive Voice & Tone</strong></td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1;">2 / 5</td>
+                <td style="padding: 8px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">5 / 5</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 16px; color: #475569; margin-top: 12px;"><strong>Workbook Companion:</strong> Document detailed comparative diagnostic notes in <em>Business_AI_Tools_Student_Worksheets.docx</em>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 7 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 8: Hour 3 Applied Business Challenge - Exercise 2 -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 3 - Applied Problem Solving (50 Minutes)</span>
+      <span>Advanced Business Challenge (Exercise 2)</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Executive Challenge: Advanced - Portfolio Defense &amp; Recruiter Simulation</div>
+    <div class="slide-subtitle">Solving complex organizational dilemmas under strict operational constraints</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card crimson-accent">
+        <div class="card-label">The Business Scenario</div>
+        <div class="card-title">Commercial Dilemma</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">- Scenario: Using the exact same 5 Prompt Specification Cards assembled in Exercise 1, prepare to defend your prompt portfolio in a competitive job interview or corporate review.
+  - Task: Engineer an interview simulation prompt where ChatGPT roleplays as an experienced Corporate...</p>
+          <ul class="card-list">
+            <li><strong>Decision Complexity:</strong> Balance multiple conflicting stakeholder priorities and commercial trade-offs.</li>
+            <li><strong>Guardrail Enforcement:</strong> Prevent defensive excuses, unapproved commitments, and speculative calculations.</li>
+            <li><strong>Stakeholder Synthesis:</strong> Deliver simultaneous outputs for both external partners and internal operating units.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Mandatory Deliverables</div>
+        <div class="card-title">Two-Tier Executive Output Requirements</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">Deliverable A: External Communication</div>
+              <div class="metric-desc">Draft a polished, empathetic, and professional communication following strict negative constraints and concise word boundaries.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Deliverable B: Internal Action Brief</div>
+              <div class="metric-desc">Formulate a structured 3-bullet internal operational action brief addressed to executive leadership detailing triage priorities and root-cause solutions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 8 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 9: Executive Summary & Actionable Workplace Checklist -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Summary & Synthesis</span>
+      <span>Workplace Takeaways</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Session 4.4 Executive Summary & Managerial Checklist</div>
+    <div class="slide-subtitle">Four enduring principles for deploying generative tools in enterprise operations</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <div class="card-label">Core Principles</div>
+        <div class="card-title">Four Managerial Commandments</div>
+        <div class="card-body">
+          <ul class="card-list">
+            <li><strong>1. Structural Rigor:</strong> Always define Role, Context, Task, and Schema to guarantee first-try workplace utility.</li>
+            <li><strong>2. Delimited Ingestion:</strong> Enclose primary business data inside clear delimiters to prevent instruction bleed.</li>
+            <li><strong>3. Explicit Negative Bounds:</strong> Specify what the AI must NOT do to eliminate conversational filler and hallucinations.</li>
+            <li><strong>4. Institutional Ownership:</strong> Enterprises remain 100% accountable for AI outputs. Always verify facts before dispatching.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Course Continuum</div>
+        <div class="card-title">Preparation for Next Module / Session</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;"><strong>Coming Next:</strong> Final Course Assessment &amp; Portfolio Review.</p>
+          <ul class="card-list" style="margin-bottom: 14px;">
+            <li>Expand prompt engineering toolkits into complex cross-functional business workflows.</li>
+            <li>Deepen hands-on data manipulation and multi-stage reasoning protocols.</li>
+            <li>Build verified artifacts for your professional AI Prompt Portfolio.</li>
+          </ul>
+          <div style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 10px 14px;">
+            <p style="font-size: 16px; color: #334155; font-weight: 600;">Complete Session 4.4 Worksheets in:</p>
+            <p style="font-size: 16px; color: #991B1B; font-family: monospace;">Business_AI_Tools_Student_Worksheets.docx</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 4.4 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 9 of 9</span>
+  </div>
+</div>
+
+</body>
+</html>

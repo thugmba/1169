@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Session 1.1: Getting Started with ChatGPT in Business - Lecture Notes</title>
+<style>
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+  
+  @media print {
+    html, body {
+      width: 16in;
+      height: 9in;
+      margin: 0;
+      padding: 0;
+      background-color: #FFFFFF !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .slide {
+      margin: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Georgia", "Times New Roman", Times, serif;
+    background-color: #4A5568;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+  }
+
+  /* Slide Master Fixed Frame: 16in x 9in */
+  .slide {
+    width: 16in;
+    height: 9in;
+    position: relative;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Harvard Crimson Accent Line */
+  .crimson-line {
+    width: 100%;
+    height: 4px;
+    background-color: #991B1B;
+    margin-top: 8px;
+  }
+
+  /* Header Area: top: 0.55in; height: 1.35in; left: 0.8in; right: 0.8in; */
+  .slide-header {
+    position: absolute;
+    top: 0.55in;
+    left: 0.8in;
+    right: 0.8in;
+    height: 1.35in;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748B;
+  }
+
+  .header-category {
+    color: #991B1B;
+  }
+
+  .slide-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-top: 4px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  .slide-subtitle {
+    font-size: 23px;
+    color: #475569;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Body Content Area: top: 2.15in; bottom: 1.05in; left: 0.8in; right: 0.8in; (Height: 5.8in) */
+  .slide-body {
+    position: absolute;
+    top: 2.15in;
+    bottom: 1.05in;
+    left: 0.8in;
+    right: 0.8in;
+    overflow: hidden;
+  }
+
+  /* Footer Area: bottom: 0.45in; height: 0.45in; left: 0.8in; right: 0.8in; */
+  .slide-footer {
+    position: absolute;
+    bottom: 0.45in;
+    left: 0.8in;
+    right: 0.8in;
+    height: 0.45in;
+    border-top: 1px solid #CBD5E1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #64748B;
+  }
+
+  .footer-left {
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .footer-center {
+    font-style: italic;
+    color: #64748B;
+  }
+
+  .footer-right {
+    font-weight: 700;
+    color: #991B1B;
+  }
+
+  /* Grid Layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35in;
+    height: 100%;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3in;
+    height: 100%;
+  }
+
+  .grid-40-60 {
+    display: grid;
+    grid-template-columns: 4.2fr 5.8fr;
+    gap: 0.35in;
+    height: 100%;
+    align-items: center;
+  }
+
+  .grid-60-40 {
+    display: grid;
+    grid-template-columns: 5.8fr 4.2fr;
+    gap: 0.35in;
+    height: 100%;
+  }
+
+  /* Card Component with Balanced 4-Sided Border (No border-left lines) */
+  .content-card {
+    background-color: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 0.22in 0.28in;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .content-card.crimson-accent {
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+  }
+
+  .content-card.blue-accent {
+    background-color: #F0F9FF;
+    border: 1px solid #BAE6FD;
+  }
+
+  .card-label {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #991B1B;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .card-body {
+    font-size: 20px;
+    color: #1E293B;
+    line-height: 1.45;
+  }
+
+  .card-list {
+    margin-top: 6px;
+    padding-left: 24px;
+  }
+
+  .card-list li {
+    font-size: 20px;
+    color: #1E293B;
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+
+  .highlight-badge {
+    display: inline-block;
+    background-color: #991B1B;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+    align-self: flex-start;
+  }
+
+  /* Code / Prompt Blocks (Font minimum 18px) */
+  .prompt-box {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 18px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    border: 1px solid #334155;
+    margin: 8px 0;
+  }
+
+  .prompt-box.weak {
+    background-color: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #F87171;
+    font-family: "Consolas", "Courier New", monospace;
+  }
+
+  .prompt-box.strong {
+    background-color: #F0FDF4;
+    color: #166534;
+    border: 1px solid #86EFAC;
+    font-family: "Consolas", "Courier New", monospace;
+  }
+
+  .figure-image {
+    width: 100%;
+    height: auto;
+    max-height: 5.1in;
+    object-fit: contain;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+  }
+
+  /* Key Metrics & Timeline */
+  .metric-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .metric-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+
+  .metric-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #991B1B;
+  }
+
+  .metric-desc {
+    font-size: 18px;
+    color: #334155;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Dedicated A vs B Showdown Slide Styles (Compact & Anti-Overlap) */
+  .showdown-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.22in;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .showdown-card {
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .showdown-card.cool {
+    background-color: #F8FAFC;
+    border: 2px solid #2563EB;
+  }
+
+  .showdown-card.warm {
+    background-color: #FEF2F2;
+    border: 2px solid #DC2626;
+  }
+
+  .showdown-badge {
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    align-self: flex-start;
+    margin-bottom: 3px;
+  }
+
+  .showdown-badge.cool {
+    background-color: #2563EB;
+  }
+
+  .showdown-badge.warm {
+    background-color: #DC2626;
+  }
+
+  .vs-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 0.45in;
+  }
+
+  .vs-line {
+    flex: 1;
+    width: 2px;
+    background-color: #CBD5E1;
+  }
+
+  .vs-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #0F172A;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 6px 0;
+  }
+
+  .pillar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 4px 0;
+  }
+
+  .pillar-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 4px;
+    padding: 5px 8px;
+  }
+
+  .pillar-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1px;
+  }
+
+  .pillar-desc {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.3;
+  }
+
+  .showdown-footer-tag {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .showdown-footer-tag.cool {
+    background-color: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+  }
+
+  .showdown-footer-tag.warm {
+    background-color: #FEF2F2;
+    color: #B91C1C;
+    border: 1px solid #FECACA;
+  }
+
+  .hybrid-workflow-bar {
+    margin-top: 10px;
+    background-color: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #0F172A;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title & Course Framework Cover -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Executive Curriculum - Applied AI in Business</span>
+      <span>3-Hour Executive Masterclass</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Business AI Tools: Effective ChatGPT Communication</div>
+    <div class="slide-subtitle">Module 1: Mastering ChatGPT Fundamentals - Session 1.1 Lecture Notes</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <span class="highlight-badge">Session Overview</span>
+        <div class="card-title">Session 1.1: Getting Started with ChatGPT in Business</div>
+        <div class="card-body">
+          <p style="margin-bottom: 12px;"><strong>Target Academic Audience:</strong> Undergraduate & Graduate (MBA) Business Students.</p>
+          <p style="margin-bottom: 12px;"><strong>Core Pedagogical Premise:</strong> Large Language Models (LLMs) operate as probabilistic word prediction systems. Executive competence begins by recognizing what models compute vs. what they invent.</p>
+          <ul class="card-list">
+            <li><strong>Duration:</strong> 3 Hours (180 Total Contact Minutes)</li>
+            <li><strong>Delivery Ratio:</strong> 1:2 (50 Min Lecture + 120 Min Hands-On Labs)</li>
+            <li><strong>Core Benchmark:</strong> Microsoft & LinkedIn Work Trend Index (2024)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card crimson-accent">
+        <span class="highlight-badge">The 3-Hour Session Rhythm</span>
+        <div class="card-title">Curriculum Architecture & Timetable</div>
+        <div class="metric-stack">
+          <div class="metric-item">
+            <div class="metric-title">Hour 1 (50 Min): Concept Lecture & Demo</div>
+            <div class="metric-desc">Next-token prediction mechanics, Search vs. GenAI framework, enterprise hallucination liabilities, and live prompt grounding.</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-title">Hour 2 (50 Min): Guided Lab (Exercise 1)</div>
+            <div class="metric-desc">PyCaret Amazon customer reviews: Testing naive vs. engineered prompts and completing the Prompt Specificity Scorecard.</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-title">Hour 3 (50 Min): Business Challenge (Exercise 2)</div>
+            <div class="metric-desc">Multi-issue customer escalation: Dual-tier executive response and internal warehouse operational triage dispatch.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 1 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 2: Session Blueprint & Learning Objectives -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Pedagogical Framework</span>
+      <span>Session Architecture</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Session Blueprint & Three Executive Learning Objectives</div>
+    <div class="slide-subtitle">Bridging statistical probability mechanics with organizational communication workflows</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-3">
+      <div class="content-card">
+        <div class="card-label">Objective 1 - Foundations</div>
+        <div class="card-title">LLM Probability Mechanics</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Demystify predictive text generation for business decision-makers:</p>
+          <ul class="card-list">
+            <li>Differentiate word probability calculation from database lookup.</li>
+            <li>Understand why high linguistic fluency does not guarantee factual truth.</li>
+            <li>Eliminate misconceptions that AI "thinks" or understands context.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Objective 2 - Strategy</div>
+        <div class="card-title">Search vs. GenAI Division</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Establish a firm operational boundary between search and prompt tasks:</p>
+          <ul class="card-list">
+            <li>Deploy Search (Google, SEC EDGAR) for verifiable deterministic facts.</li>
+            <li>Deploy Generative AI (ChatGPT) for drafting, synthesis, and tone translation.</li>
+            <li>Adopt the Hybrid Workflow: Source verified facts first, then draft.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card crimson-accent">
+        <div class="card-label">Objective 3 - Governance</div>
+        <div class="card-title">Hallucination Risk Mitigation</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Institutionalize verification guardrails across workplace workflows:</p>
+          <ul class="card-list">
+            <li>Review corporate legal precedents (Air Canada 2024 Ruling).</li>
+            <li>Apply the Copywriter Principle: AI drafts, human executives verify.</li>
+            <li>Enforce mandatory human sign-off on all customer-facing text.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 2 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 3: Part 1 - How LLMs Actually Work -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Theoretical Foundations (Part 1)</span>
+      <span>LLM Mechanics</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">How Large Language Models (LLMs) Actually Work</div>
+    <div class="slide-subtitle">The predictive autocomplete analogy: Statistical probability vs. factual comprehension</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <div class="card-label">The Mathematical Reality</div>
+        <div class="card-title">Next-Token Probabilistic Generation</div>
+        <div class="card-body">
+          <p style="margin-bottom: 12px;">Large Language Models (LLMs) do not retrieve records from a database. They calculate probabilistic distributions across billions of parameters.</p>
+          <ul class="card-list">
+            <li><strong>Token Vectors:</strong> Text is split into numerical tokens. The model assesses probability vectors across its vocabulary.</li>
+            <li><strong>Probability Distributions:</strong> Given the preceding string, the system generates the statistically most plausible next word token.</li>
+            <li><strong>Fluency vs. Factuality:</strong> The system optimizes solely for linguistic plausibility, producing articulate text with zero innate sense of truth.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Management Implications</div>
+        <div class="card-title">Why "Fluency" Traps Executives</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">The Fluency Heuristic Trap</div>
+              <div class="metric-desc">Humans naturally associate articulate, well-structured prose with authority and expertise. An LLM speaks with complete confidence even when generating false statements.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Zero Underlying Fact Repository</div>
+              <div class="metric-desc">LLMs store statistical weights, not factual tables. It never "looks up" dates or prices; it reconstructs language based on pattern frequency.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Executive Directive</div>
+              <div class="metric-desc">Never request ungrounded market statistics or regulatory policies without feeding the source data directly into the prompt.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 3 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 4: Dedicated A vs. B Showdown Slide - Search vs GenAI -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Strategic Benchmark Showdown (Part 2)</span>
+      <span>Enterprise Tool Arbitrage</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Search Engine vs. Generative AI: Strategic Showdown</div>
+    <div class="slide-subtitle">Deterministic factual indexer vs. probabilistic linguistic synthesis in enterprise workflows</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="showdown-grid">
+      <!-- SYSTEM A: Google Search (Cool Blue) -->
+      <div class="showdown-card cool">
+        <div>
+          <span class="showdown-badge cool">System A: Deterministic Search</span>
+          <div class="card-title" style="margin-top: 4px; color: #1E3A8A;">Google Search Engine</div>
+          <p style="font-size: 17px; color: #2563EB; font-weight: 700; margin-bottom: 6px;">Archetype: Web Indexer & Hard Record Finder</p>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 1: Data Architecture</div>
+              <div class="pillar-desc">Crawled web index with deterministic document retrieval. Locates exact filings, statutory codes, and live market quotes.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 2: Corporate Accuracy</div>
+              <div class="pillar-desc">Audit-grade citations with direct links to primary regulatory documents (SEC Form 10-K, government portals, court records).</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #1D4ED8;">Pillar 3: Operational Failure Mode</div>
+              <div class="pillar-desc">Returns unformatted raw documents. Cannot draft executive memos, adapt tone, or synthesize unstructured data.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag cool">MANDATORY FOR: Hard Audit Facts, Numerical Data, Primary Filings</div>
+      </div>
+
+      <!-- VS DIVIDER -->
+      <div class="vs-divider">
+        <div class="vs-line"></div>
+        <div class="vs-badge">VS</div>
+        <div class="vs-line"></div>
+      </div>
+
+      <!-- SYSTEM B: ChatGPT (Warm Crimson) -->
+      <div class="showdown-card warm">
+        <div>
+          <span class="showdown-badge warm">System B: Generative Language Model</span>
+          <div class="card-title" style="margin-top: 4px; color: #991B1B;">OpenAI ChatGPT (LLM)</div>
+          <p style="font-size: 17px; color: #DC2626; font-weight: 700; margin-bottom: 6px;">Archetype: Probabilistic Linguistic Synthesizer</p>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 1: Data Architecture</div>
+              <div class="pillar-desc">Next-token predictive probability distribution across billions of parameters. Optimizes for rhetorical fluency and structural patterns.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 2: Corporate Accuracy</div>
+              <div class="pillar-desc">Rapid drafting of executive correspondence, restructuring raw notes into schemas, and translating technical jargon.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 3: Operational Failure Mode</div>
+              <div class="pillar-desc">Hallucinates non-existent facts and policies when prompted for ungrounded citations without delimited source data.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag warm">MANDATORY FOR: Tone Translation, Executive Drafting, Text Structuring</div>
+      </div>
+    </div>
+
+    <!-- Hybrid Workflow Bar -->
+    <div class="hybrid-workflow-bar">
+      <span style="font-weight: 700; color: #991B1B;">The Modern Business Hybrid Workflow:</span>
+      <span><strong>Step 1 (Search):</strong> Source verified numbers from SEC/databases</span>
+      <span style="color: #94A3B8;">-></span>
+      <span><strong>Step 2 (Prompt):</strong> Ingest verified numbers into ChatGPT with delimiters</span>
+      <span style="color: #94A3B8;">-></span>
+      <span><strong>Step 3 (Deliver):</strong> Output executive-ready memos</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 4 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 5: Part 3 - Hallucinations & Enterprise Legal Liability -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Legal & Ethical Governance (Part 3)</span>
+      <span>Enterprise Risk Case Study</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Hallucination Mechanics & Corporate Legal Liability</div>
+    <div class="slide-subtitle">Case Study: Air Canada v. Moffatt (2024) Civil Resolution Tribunal Ruling</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card crimson-accent">
+        <div class="card-label">The Legal Precedent (2024)</div>
+        <div class="card-title">Air Canada Chatbot Liability Ruling</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">In 2024, a customer used Air Canada's official website chatbot to inquire about bereavement discount policies after a family bereavement.</p>
+          <ul class="card-list">
+            <li><strong>The AI Hallucination:</strong> The chatbot fabricated a non-existent policy, advising the passenger to book regular fares and claim refunds within 90 days.</li>
+            <li><strong>Corporate Defense:</strong> Air Canada claimed the chatbot was a separate entity and that the passenger should have checked the static policy webpage.</li>
+            <li><strong>Tribunal Judgment:</strong> The tribunal rejected the defense, ruling the airline strictly liable for its chatbot's claims and awarding financial damages.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Executive Guardrails</div>
+        <div class="card-title">The Three Mandatory Defenses</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 1: The Copywriter Principle</div>
+              <div class="metric-desc">Treat ChatGPT as a brilliant junior copywriter, but a completely irresponsible auditor. No external memo leaves without human audit.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 2: Deterministic Data Anchoring</div>
+              <div class="metric-desc">Never permit models to invent company policies, discount codes, or pricing. Provide verified policy text inside explicit delimiters.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Guardrail 3: Explicit Refusal Directive</div>
+              <div class="metric-desc">Instruct the model: <em>"If the requested information is not in the text below, state: 'Information not provided in source data'."</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 5 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 6: Dedicated A vs. B Showdown Slide - Naive vs Engineered Prompt -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 1 - Live Demonstration Showdown (Part 4)</span>
+      <span>Prompt Architecture Arbitrage</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Prompt Grounding: Naive Request vs. Engineered Architecture</div>
+    <div class="slide-subtitle">Demonstrating how persona definition and operational boundaries eliminate conversational fluff</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="showdown-grid">
+      <!-- APPROACH A: Naive Request (Warm Red) -->
+      <div class="showdown-card warm">
+        <div>
+          <span class="showdown-badge warm">Approach A: Naive Request (Weak)</span>
+          <div class="prompt-box weak" style="font-size: 16px; padding: 8px 12px; margin: 4px 0 8px 0;">Write an apology email to an angry customer whose delivery was late.</div>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 1: Persona Grounding</div>
+              <div class="pillar-desc">No role or context provided. Model defaults to generic, ungrounded conversational probabilities.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 2: Operational Boundaries</div>
+              <div class="pillar-desc">Unbounded length. Zero monetary remedies, credit codes, carrier routing details, or action steps.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #B91C1C;">Pillar 3: Enterprise Quality</div>
+              <div class="pillar-desc">Produces hollow corporate cliches ("We value your business") requiring manual rewrites.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag warm">RESULT: Unusable Draft Requiring 100% Manual Revision</div>
+      </div>
+
+      <!-- VS DIVIDER -->
+      <div class="vs-divider">
+        <div class="vs-line"></div>
+        <div class="vs-badge">VS</div>
+        <div class="vs-line"></div>
+      </div>
+
+      <!-- APPROACH B: Engineered Architecture (Cool/Green) -->
+      <div class="showdown-card cool" style="border-color: #16A34A; background-color: #F0FDF4;">
+        <div>
+          <span class="showdown-badge" style="background-color: #16A34A;">Approach B: Engineered Architecture (Strong)</span>
+          <div class="prompt-box strong" style="font-size: 15px; padding: 8px 12px; margin: 4px 0 8px 0; line-height: 1.35;">Role: Customer Support Lead (artisanal coffee brand).
+Context: 4-day courier delay due to regional weather.
+Rules: (1) Apologize in sentence 1; (2) Offer $10 code [COFFEE10];
+(3) Explain carrier policy in 2 bullets; (4) Under 150 words.</div>
+          <div class="pillar-stack">
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 1: Persona Grounding</div>
+              <div class="pillar-desc">Support Lead persona restricts token vocabulary to professional domain customer service language.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 2: Operational Boundaries</div>
+              <div class="pillar-desc">Four strict constraints eliminate filler, embed approved store credit, and enforce concise length.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-title" style="color: #15803D;">Pillar 3: Enterprise Quality</div>
+              <div class="pillar-desc">Executive-ready, empathetic deliverable produced on the very first prompt generation attempt.</div>
+            </div>
+          </div>
+        </div>
+        <div class="showdown-footer-tag" style="background-color: #DCFCE7; color: #166534; border: 1px solid #BBF7D0;">RESULT: Workplace-Ready Output on First Generation Attempt</div>
+      </div>
+    </div>
+
+    <!-- Synthesis Takeaway Bar -->
+    <div class="hybrid-workflow-bar" style="margin-top: 0.1in;">
+      <span style="font-weight: 700; color: #991B1B;">Takeaway:</span>
+      <span>Explicit negative and structural constraints narrow LLM probability distributions from generic platitudes into precise workplace execution.</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 6 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 7: Hour 2 Guided Lab - Customer Review Response Scorecard -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 2 - Guided Lab Protocol (50 Minutes)</span>
+      <span>Foundational Practice (Exercise 1)</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Guided Lab: Customer Review Response & Scorecard Audit</div>
+    <div class="slide-subtitle">Public Dataset: PyCaret Open Amazon Customer Reviews (CSV)</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-60-40">
+      <div class="content-card">
+        <div class="card-label">Step-by-Step Lab Protocol</div>
+        <div class="card-title">4-Step Comparative Evaluation Workflow</div>
+        <div class="card-body">
+          <ol class="card-list" style="padding-left: 22px;">
+            <li style="margin-bottom: 12px;"><strong>Step 1: Dataset Extraction:</strong> Open the Amazon Customer Reviews CSV. Copy the full text of one 5-star positive review and one 1-star negative complaint.</li>
+            <li style="margin-bottom: 12px;"><strong>Step 2: Unconstrained Benchmark:</strong> Paste the text into ChatGPT with the naive prompt: <em>"Write a customer service reply to these reviews."</em> Note generic platitudes.</li>
+            <li style="margin-bottom: 12px;"><strong>Step 3: Engineered Execution:</strong> In a fresh chat, deploy the engineered Customer Support Lead prompt with role, context, replacement offers, and word-count boundaries.</li>
+            <li style="margin-bottom: 12px;"><strong>Step 4: Audit & Score:</strong> Populate the 3-metric audit table in your workbook evaluating Output A vs. Output B on a 1-to-5 scale.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Student Audit Deliverable</div>
+        <div class="card-title">Prompt Evaluation Scorecard</div>
+        <div class="card-body">
+          <table style="width: 100%; border-collapse: collapse; font-size: 18px; margin-top: 6px;">
+            <thead>
+              <tr style="background-color: #E2E8F0; text-align: left;">
+                <th style="padding: 10px; border: 1px solid #CBD5E1;">Evaluation Metric</th>
+                <th style="padding: 10px; border: 1px solid #CBD5E1;">Naive</th>
+                <th style="padding: 10px; border: 1px solid #CBD5E1;">Engineered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;"><strong>Operational Usefulness</strong></td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;">1 - 2 / 5</td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">4 - 5 / 5</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;"><strong>Factual Accuracy</strong></td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;">2 - 3 / 5</td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">5 / 5</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;"><strong>Executive Voice & Tone</strong></td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1;">2 / 5</td>
+                <td style="padding: 10px; border: 1px solid #CBD5E1; color: #166534; font-weight: 700;">5 / 5</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 17px; color: #475569; margin-top: 14px;"><strong>Student Workbook Check:</strong> Record your 1-sentence diagnostic note in <em>Business_AI_Tools_Student_Worksheets.docx (Page 3)</em>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 7 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 8: Hour 3 Applied Business Challenge - Multi-Issue Escalation -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Hour 3 - Applied Problem Solving (50 Minutes)</span>
+      <span>Advanced Business Challenge (Exercise 2)</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Executive Challenge: Multi-Issue Escalation & Internal Triage</div>
+    <div class="slide-subtitle">Resolving concurrent operational breakdowns under strict enterprise constraints</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card crimson-accent">
+        <div class="card-label">The Executive Dilemma</div>
+        <div class="card-title">Triple Operational Breakdown Scenario</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;">Identify a 1-star customer escalation citing three concurrent failures:</p>
+          <ul class="card-list" style="margin-bottom: 12px;">
+            <li><strong>Failure 1:</strong> Crushed exterior packaging resulting in damaged product.</li>
+            <li><strong>Failure 2:</strong> A 5-day delivery delay past the promised service window.</li>
+            <li><strong>Failure 3:</strong> Unresponsive third-party logistics courier tracking.</li>
+          </ul>
+          <p><strong>Executive Complexity:</strong> De-escalate an infuriated high-LTV subscriber without shifting blame to couriers or making unapproved commitments.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">Mandatory Deliverables</div>
+        <div class="card-title">Two-Tier Executive Output Requirements</div>
+        <div class="card-body">
+          <div class="metric-stack">
+            <div class="metric-item">
+              <div class="metric-title">Deliverable A: External Customer Reply</div>
+              <div class="metric-desc">Draft an empathetic reply under 150 words. Strict negative constraints: No defensive excuses, no blaming third-party couriers. Propose immediate replacement plus a promo code.</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-title">Deliverable B: Internal Warehouse Triage Alert</div>
+              <div class="metric-desc">Generate a concise 3-bullet operational alert for the Warehouse Fulfillment Team detailing packaging reinforcement, carrier auditing, and inventory tracking.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 8 of 9</span>
+  </div>
+</div>
+
+<!-- SLIDE 9: Executive Summary & Actionable Workplace Checklist -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="header-meta">
+      <span class="header-category">Summary & Synthesis</span>
+      <span>Workplace Takeaways</span>
+    </div>
+    <div class="crimson-line"></div>
+    <div class="slide-title">Session 1.1 Executive Summary & Managerial Checklist</div>
+    <div class="slide-subtitle">Four enduring principles for deploying generative tools in enterprise operations</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <div class="content-card">
+        <div class="card-label">Core Principles</div>
+        <div class="card-title">Four Managerial Commandments</div>
+        <div class="card-body">
+          <ul class="card-list">
+            <li><strong>1. Probability, Not Consciousness:</strong> LLMs generate plausible words based on statistical weights. Never assume the model "knows" what is true.</li>
+            <li><strong>2. Respect the Boundary:</strong> Use Google or internal databases for deterministic facts; use ChatGPT for linguistic synthesis, framing, and formatting.</li>
+            <li><strong>3. Persona Anchoring:</strong> Always assign a specific professional role to narrow vocabulary distribution toward high-caliber workplace communication.</li>
+            <li><strong>4. Institutional Verification:</strong> The Air Canada ruling established that organizations own their AI's output. Always verify before dispatching.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-card blue-accent">
+        <div class="card-label">Course Continuum</div>
+        <div class="card-title">Preparation for Session 1.2</div>
+        <div class="card-body">
+          <p style="margin-bottom: 10px;"><strong>Coming Next:</strong> Session 1.2: Structuring Your Prompts for Success.</p>
+          <ul class="card-list" style="margin-bottom: 14px;">
+            <li>Transition from conversational chatting to the formal <strong>4-Box Prompt Architecture</strong> (Role, Context, Task, Output Template).</li>
+            <li>Master structural delimiters (`###`, `---`) to isolate data from commands.</li>
+            <li>Analyze real-world corporate product launch press releases from PR Newswire.</li>
+          </ul>
+          <div style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px; padding: 10px 14px;">
+            <p style="font-size: 16px; color: #334155; font-weight: 600;">Complete Session 1.1 Lab Sheets in:</p>
+            <p style="font-size: 16px; color: #991B1B; font-family: monospace;">Business_AI_Tools_Student_Worksheets.docx</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="footer-left">Business AI Tools - Session 1.1 Lecture Notes</span>
+    <span class="footer-center">Department of Management & Business Analytics</span>
+    <span class="footer-right">Slide 9 of 9</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
 *.qmd
 *.pptx
 generate_worksheets.py
+__pycache__/
