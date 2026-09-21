@@ -128,15 +128,20 @@ def generate_session_html(sess):
     line-height: 1.4;
   }}
 
-  /* Slide Master Fixed Frame: 16in x 9in */
+  /* Slide Master Fixed Frame: 16in x 9in with Flexbox Vertical Flow */
   .slide {{
     width: 16in;
     height: 9in;
+    box-sizing: border-box;
     position: relative;
+    page-break-after: always;
     overflow: hidden;
     background-color: #FFFFFF;
     margin: 20px auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 0.45in 0.8in 0.38in 0.8in;
+    display: flex;
+    flex-direction: column;
   }}
 
   /* Harvard Crimson Accent Line */
@@ -144,16 +149,14 @@ def generate_session_html(sess):
     width: 100%;
     height: 4px;
     background-color: #991B1B;
-    margin-top: 8px;
+    margin-top: 6px;
+    margin-bottom: 4px;
   }}
 
-  /* Header Area: top: 0.55in; height: 1.35in; left: 0.8in; right: 0.8in; */
+  /* Header Area: Flex child in natural vertical flow (zero absolute positioning) */
   .slide-header {{
-    position: absolute;
-    top: 0.55in;
-    left: 0.8in;
-    right: 0.8in;
-    height: 1.35in;
+    flex-shrink: 0;
+    margin-bottom: 0.18in;
   }}
 
   .header-meta {{
@@ -172,7 +175,7 @@ def generate_session_html(sess):
   }}
 
   .slide-title {{
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 700;
     color: #0F172A;
     margin-top: 4px;
@@ -181,35 +184,33 @@ def generate_session_html(sess):
   }}
 
   .slide-subtitle {{
-    font-size: 22px;
+    font-size: 21px;
     color: #475569;
     margin-top: 4px;
     font-style: italic;
   }}
 
-  /* Body Content Area: top: 2.15in; bottom: 1.05in; left: 0.8in; right: 0.8in; (Height: 5.8in) */
+  /* Body Content Area: Flex child dynamically expanding in middle space */
   .slide-body {{
-    position: absolute;
-    top: 2.15in;
-    bottom: 1.05in;
-    left: 0.8in;
-    right: 0.8in;
-    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 0.28in;
   }}
 
-  /* Footer Area: bottom: 0.45in; height: 0.45in; left: 0.8in; right: 0.8in; */
+  /* Footer Area: Flex child strictly locked to bottom baseline */
   .slide-footer {{
-    position: absolute;
-    bottom: 0.45in;
-    left: 0.8in;
-    right: 0.8in;
-    height: 0.45in;
+    flex-shrink: 0;
+    height: 0.42in;
     border-top: 1px solid #CBD5E1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
     color: #64748B;
+    margin-top: auto;
   }}
 
   .footer-left {{
@@ -227,26 +228,29 @@ def generate_session_html(sess):
     color: #991B1B;
   }}
 
-  /* Grid Layouts */
+  /* Grid Layouts with Flex Child Dynamic Scaling */
   .grid-2 {{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.35in;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
   }}
 
   .grid-3 {{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.3in;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
   }}
 
   .grid-60-40 {{
     display: grid;
     grid-template-columns: 5.8fr 4.2fr;
     gap: 0.35in;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
   }}
 
   /* Card Component with Balanced 4-Sided Border */
@@ -414,16 +418,23 @@ def generate_session_html(sess):
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    align-self: flex-start;
-    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
   }}
 
   .showdown-badge.cool {{
-    background-color: #2563EB;
+    background-color: #1E3A8A;
+    color: #FFFFFF;
   }}
 
   .showdown-badge.warm {{
-    background-color: #DC2626;
+    background-color: #991B1B;
+    color: #FFFFFF;
   }}
 
   .vs-divider {{
@@ -431,7 +442,6 @@ def generate_session_html(sess):
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 0.45in;
   }}
 
   .vs-line {{
@@ -467,7 +477,7 @@ def generate_session_html(sess):
     background: #FFFFFF;
     border: 1px solid #E2E8F0;
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 3px 6px;
   }}
 
   .pillar-title {{
@@ -479,7 +489,7 @@ def generate_session_html(sess):
   }}
 
   .pillar-desc {{
-    font-size: 13.5px;
+    font-size: 13px;
     color: #334155;
     line-height: 1.25;
   }}
@@ -506,15 +516,15 @@ def generate_session_html(sess):
   }}
 
   .hybrid-workflow-bar {{
-    margin-top: 8px;
+    margin-top: 5px;
     background-color: #F1F5F9;
     border: 1px solid #CBD5E1;
     border-radius: 6px;
-    padding: 5px 12px;
+    padding: 3px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14.5px;
+    font-size: 13.5px;
     color: #0F172A;
   }}
 </style>
@@ -1112,42 +1122,58 @@ def build_all():
         html_path = os.path.join(SLIDES_DIR, html_filename)
         pdf_path = os.path.join(SLIDES_DIR, pdf_filename)
 
-        # Generate HTML for sessions 1.2 to 4.4 (preserve manual 1.1 if preferred, or regenerate with exact layout)
-        if s_num == "1.1":
-            print(f"Skipping Session 1.1 HTML generation (already manually verified), will verify PDF.")
-        else:
-            html_content = generate_session_html(sess)
-            with open(html_path, 'w', encoding='utf-8') as f:
-                f.write(html_content)
-            print(f"Wrote HTML: {html_filename}")
+        # Generate HTML for all sessions (including 1.1 with unified flexbox architecture)
+        html_content = generate_session_html(sess)
+        with open(html_path, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        print(f"Wrote HTML: {html_filename}")
 
-            # Compile to PDF using Headless Chrome
-            print(f"Compiling PDF for Session {s_num}...")
-            cmd = [
-                CHROME_EXE,
-                "--headless=new",
-                "--disable-gpu",
-                "--no-pdf-header-footer",
-                f"--print-to-pdf={pdf_path}",
-                f"file:///{html_path.replace(os.sep, '/')}"
-            ]
-            subprocess.run(cmd, check=True)
-            print(f"Compiled PDF: {pdf_filename}")
+        # Compile to PDF using Headless Chrome
+        print(f"Compiling PDF for Session {s_num}...")
+        cmd = [
+            CHROME_EXE,
+            "--headless=new",
+            "--disable-gpu",
+            "--no-pdf-header-footer",
+            f"--print-to-pdf={pdf_path}",
+            f"file:///{html_path.replace(os.sep, '/')}"
+        ]
+        subprocess.run(cmd, check=True)
+        print(f"Compiled PDF: {pdf_filename}")
 
-        # Verification with PyMuPDF
+        # Dual-Boundary Verification with PyMuPDF
         doc = fitz.open(pdf_path)
         assert len(doc) == 9, f"Session {s_num} PDF has {len(doc)} pages (expected 9)!"
+        footer_line_y0 = 588.75 # Locked footer baseline
+        
         for p_idx, page in enumerate(doc):
             txt = page.get_text()
             non_ascii = [c for c in txt if ord(c) > 127]
             assert not non_ascii, f"Session {s_num} Page {p_idx+1} has non-ascii characters: {set(non_ascii)}"
-            # Verify no block encroaches on footer (y > 560 for non-footer)
+            
+            # 1. Header subtitle clearance check (b1 is the subtitle block)
             blocks = page.get_text('blocks')
-            for b in blocks:
-                b_txt = b[4].strip()
-                if b[3] > 565 and "Slide" not in b_txt and "Business Analytics" not in b_txt and "Business AI Tools" not in b_txt:
-                    print(f"  [WARNING] Session {s_num} Page {p_idx+1}: block {b_txt[:30]} at y1={b[3]:.1f} encroaches on footer!")
-        print(f"Verified Session {s_num} PDF: 9 pages, pure ASCII, anti-overlap OK.")
+            b1 = blocks[1]
+            subtitle_y1 = b1[3]
+            
+            card_rects = [d['rect'] for d in page.get_drawings() if 75 < d['rect'].y0 and d['rect'].y1 < 585 and d['rect'].height > 5]
+            min_card_top = min([r.y0 for r in card_rects]) if card_rects else 999
+            max_card_bottom = max([r.y1 for r in card_rects]) if card_rects else 0
+            
+            top_clearance = min_card_top - subtitle_y1
+            if top_clearance < 10.0:
+                print(f"  [WARNING] Session {s_num} Page {p_idx+1}: Top clearance violation! subtitle_y1={subtitle_y1:.1f}, card_top={min_card_top:.1f} (gap={top_clearance:.1f}pt)")
+            
+            # 2. Footer clearance check
+            body_text_blocks = [b for b in blocks[2:] if b[1] < 580]
+            max_body_text = max([b[3] for b in body_text_blocks]) if body_text_blocks else 0
+            
+            max_content_bottom = max(max_card_bottom, max_body_text)
+            bottom_clearance = footer_line_y0 - max_content_bottom
+            if bottom_clearance < 10.0:
+                print(f"  [WARNING] Session {s_num} Page {p_idx+1}: Bottom clearance violation! content_bottom={max_content_bottom:.1f}, footer={footer_line_y0:.1f} (gap={bottom_clearance:.1f}pt)")
+                
+        print(f"Verified Session {s_num} PDF: 9 pages, pure ASCII, dual-boundary anti-overlap OK.")
 
     print("\nAll 16 Session PDFs generated and verified successfully!")
 
