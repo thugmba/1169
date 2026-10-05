@@ -1,0 +1,9 @@
+day,item,units_sold,unit_price_USD,unit_food_cost_USD,customer_note
+Monday,Burger,18,9.00,3.60,Popular at lunch
+Monday,Salad,10,8.00,2.80,Asked for faster pickup
+Monday,Wrap,14,8.50,3.10,Popular with office customers
+Tuesday,Burger,24,9.00,3.60,Long lunch queue
+Tuesday,Soup,12,6.50,2.00,Sold out at 1 PM
+Wednesday,Salad,8,8.00,2.80,Customers asked for more dressing
+Wednesday,Wrap,18,8.50,3.10,Popular at lunch
+Wednesday,Burger,16,9.00,3.60,Long lunch queue
