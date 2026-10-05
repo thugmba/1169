@@ -2,7 +2,7 @@ metric,period,value,unit,notes
 peak_hour_transactions,weekday_17_00_to_19_00,84,transactions_per_hour,Instructional fictional case data
 average_queue_time,weekday_17_00_to_19_00,7.5,minutes,Instructional fictional case data
 cashier_hourly_wage,current,18,USD_per_hour,Instructional fictional case data
-proposed_kiosks,pilot,2,kiosks,Instructional fictional case data
+additional_kiosks,pilot,2,kiosks,Two additional kiosks while staffed lanes remain open
 kiosk_monthly_lease,per_kiosk,1150,USD_per_month,Instructional fictional case data
 monthly_support_cost,pilot,250,USD_per_month,Instructional fictional case data
 baseline_inventory_shrinkage,current,1.2,percent_of_sales,Instructional fictional case data
