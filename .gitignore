@@ -2,3 +2,6 @@
 *.pptx
 generate_worksheets.py
 __pycache__/
+
+/.quarto/
+**/*.quarto_ipynb
