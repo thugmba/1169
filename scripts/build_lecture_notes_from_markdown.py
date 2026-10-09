@@ -112,12 +112,12 @@ def items_from(block: str) -> list[str]:
 
 
 def lecture_parts(lecture: str) -> list[tuple[str, list[str]]]:
-    matches = list(re.finditer(r"(?m)^[ \t]{2}-[ \t]+\*\*Part\s+\d+:\s*(.*?)\*\*[ \t]*$", lecture))
+    matches = list(re.finditer(r"(?m)^[ \t]{2}-[ \t]+\*\*Part\s+\d+:\s*(.*?)\*\*:?([ \t]*[^\n]*)$", lecture))
     out = []
     for i, match in enumerate(matches):
         end = matches[i + 1].start() if i + 1 < len(matches) else len(lecture)
         title = plain(match.group(1)).rstrip(":")
-        content = lecture[match.end():end]
+        content = match.group(2).strip() + "\n" + lecture[match.end():end]
         out.append((title, items_from(content)))
     return out
 
@@ -126,6 +126,7 @@ def prompt_examples(section: str, blocks: list[tuple[str, str]]) -> tuple[list[s
     candidates = [(label.lower(), value) for label, value in blocks
                   if any(w in label.lower() for w in ("prompt comparison", "prompt examples", "poor", "good"))]
     text = "\n".join(v for _, v in candidates)
+    text = re.sub(r"(?m)^[ \t]*>[ \t]?", "", text)
     poor: list[str] = []
     good: list[str] = []
     fence_pat = re.compile(r"(?m)^[ \t]*\x60{3}(?:\w+)?[ \t]*\n([\s\S]*?)\n[ \t]*\x60{3}[ \t]*$")
@@ -133,7 +134,9 @@ def prompt_examples(section: str, blocks: list[tuple[str, str]]) -> tuple[list[s
         before = text[max(0, match.start() - 420):match.start()]
         labels = list(re.finditer(r"(?i)\b(weak|strong|poor|improved|good)(?:\s+example)?(?:\s+[12])?\b", before))
         label = labels[-1].group(1).lower() if labels else ""
-        snippet = plain(match.group(1))
+        snippet = match.group(1).strip()
+        for old, new in REPLACEMENTS.items():
+            snippet = snippet.replace(old, new)
         if len(snippet) > 1000:
             snippet = snippet[:997].rsplit(" ", 1)[0] + "..."
         if label in ("weak", "poor") and len(poor) < 2:
@@ -274,7 +277,17 @@ def make_deck(num: str, title: str, section: str) -> str:
     method = items_from(pick(blocks, "Three-step method", "Method"))
     lecture = pick(blocks, "Lecture Content")
     parts = lecture_parts(lecture) if lecture else []
-    if concepts:
+    if parts and num.startswith(("2.", "3.", "4.")):
+        for offset in range(0, len(parts), 2):
+            group = parts[offset:offset + 2]
+            body = '<div class="grid ' + ("two" if len(group) == 2 else "one") + '">'
+            for part_title, part_items in group:
+                body += card(part_title, bullet_list(part_items[:6]), "Learn")
+            if len(group) == 1 and method:
+                body += card("Three-step method", bullet_list(method[:3]), "Apply")
+            body += "</div>"
+            pages.append(slide("Lesson explanation", "Understand the idea and apply it", "Work through the explanation before comparing prompts or starting the exercise.", body, slug, n)); n += 1
+    elif concepts:
         concept_chunks = chunked(concepts, 900)
         for idx, group in enumerate(concept_chunks):
             body = '<div class="grid two">' + card("Core concepts", bullet_list(group), "Understand")
@@ -295,10 +308,10 @@ def make_deck(num: str, title: str, section: str) -> str:
 
     poor, good = prompt_examples(section, blocks)
     if poor:
-        body = '<div class="grid two">' + "".join(card(f"Weak example {i+1}", f'<pre>{esc(p)}</pre>', "Avoid") for i, p in enumerate(poor)) + '</div>'
+        body = '<div class="grid two">' + "".join(card(f"Weak example {i+1}", f'<div class="prompt-box weak"><pre>{esc(p)}</pre></div>', "Avoid") for i, p in enumerate(poor)) + '</div>'
         pages.append(slide("Compare examples", "What makes a prompt weak?", "These examples come from the current session scenario.", body, slug, n)); n += 1
     if good:
-        body = '<div class="grid two">' + "".join(card(f"Improved example {i+1}", f'<pre>{esc(p)}</pre>', "Use") for i, p in enumerate(good)) + '</div>'
+        body = '<div class="grid two">' + "".join(card(f"Improved example {i+1}", f'<div class="prompt-box good"><pre>{esc(p)}</pre></div>', "Use") for i, p in enumerate(good)) + '</div>'
         pages.append(slide("Compare examples", "A clearer, safer prompt", "Keep the source, task, constraints, and output check visible.", body, slug, n)); n += 1
 
     exercise1 = pick(blocks, "Exercise 1") or pick(blocks, "How to Practice")
@@ -341,6 +354,10 @@ main { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-bot
 .grid.two > .card { width: 50%; }
 .grid.one > .card { width: 100%; }
 .card { min-width: 0; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px 24px; background: #fbfbfa; overflow: hidden; }
+.prompt-box { margin-top: 8px; padding: 14px 16px; border: 1px solid #94a3b8; border-radius: 10px; background: #f1f5f9; }
+.prompt-box.weak { border-color: #fda4af; background: #fff1f2; }
+.prompt-box.good { border-color: #86efac; background: #ecfdf5; }
+.prompt-box pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 20px/1.25 'Courier New', monospace; color: #172033; }
 .tag { margin: 0 0 8px; color: #991b1b; font-size: 17px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 h2 { margin: 0 0 12px; color: #172033; font: bold 30px/1.12 Georgia, 'Times New Roman', serif; }
 p, li { font-size: 24px; line-height: 1.28; }
