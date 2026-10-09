@@ -63,7 +63,7 @@ function largeStoryDeck() {
   ])));
   let pageNumber = 1;
   const numberedSlides = s.join('\n').replace(/<strong>\d+ \/ 10<\/strong>/g, () => `<strong>${String(++pageNumber).padStart(2, '0')} / 14</strong>`);
-  return `<section class="image-slide"><img src="../../images/session_1_4_problem_illustration.png" alt="A supermarket owner considers a self-checkout kiosk pilot."><div class="speech-bubble">How can we reduce peak-hour queues without hurting service or costs?</div></section>${numberedSlides}`;
+  return `<section class="image-slide"><img src="../../images/session_1_4_problem_illustration.png" alt="A supermarket owner asks how to reduce peak-hour queues without hurting service or costs."></section>${numberedSlides}`;
 }
 
 function deck(d) {
