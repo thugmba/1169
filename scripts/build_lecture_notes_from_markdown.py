@@ -23,7 +23,7 @@ ART = {
     "1_2": ("session_1_2_prompt_architecture_hanji.png", "How can one prompt produce a useful business briefing?"),
     "1_3": ("session_1_3_constraints_hanji.png", "How can we make this summary short, clear, and useful?"),
     "1_4": ("session_1_4_problem_hanji.png", "Should we test two more kiosks and keep staffed lanes open?"),
-    "2_1": ("session_2_1_business_data_hanji.png", "Which lunch change could improve service without hurting profit?"),
+    "2_1": ("session_2_1_bubble_tea_menu_hanji.png", "Which drink should we remove from the menu?"),
     "2_2": ("session_2_2_prompt_quality_hanji.png", "Does this reply follow our return policy?"),
     "2_3": ("session_2_3_project_scope_hanji.png", "Can we add juice without breaking our budget or deadline?"),
     "2_4": ("session_2_4_customer_profiles_hanji.png", "What would make this budgeting app useful to different users?"),
@@ -36,6 +36,9 @@ ART = {
     "4_3": ("session_4_3_prompt_selection_hanji.png", "Which prompt is worth polishing first?"),
     "4_4": ("session_4_4_prompt_portfolio_hanji.png", "Can a teammate use this prompt safely on their own?"),
 }
+
+# Sessions whose deck needs a custom layout; their own script builds them.
+CUSTOM_DECKS = {"2_1": "scripts/build_session_2_1_deck.py"}
 
 REPLACEMENTS = {
     "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
@@ -76,6 +79,7 @@ def top_blocks(section: str) -> list[tuple[str, str]]:
         end = found[i + 1].start() if i + 1 < len(found) else len(section)
         label = plain(match.group(1)).rstrip(":")
         value = match.group(2) + "\n" + section[match.end():end]
+        value = re.split(r"(?m)^---[ \t]*$|^#{1,3} ", value)[0]
         blocks.append((label, value.strip("\n")))
     return blocks
 
@@ -325,14 +329,21 @@ def make_deck(num: str, title: str, section: str) -> str:
             body = '<div class="grid one">' + card(title_text + (f" - continued {ix+1}" if ix else ""), bullet_list(group), label) + '</div>'
             pages.append(slide(label, title_text if ix == 0 else title_text + " (continued)", "Use the complete case and instructions from the session Markdown.", body, slug, n)); n += 1
 
-    deliverable = items_from(pick(blocks, "Deliverable"))
+    deliverable = items_from(pick(blocks, "Report", "Deliverable"))
     success = items_from(pick(blocks, "Success check", "What to Expect"))
     if not deliverable:
         deliverable = ["Submit the exercise output and briefly state which source facts support it."]
     if not success:
         success = ["The answer follows the session constraints, uses supplied evidence, and labels missing information instead of guessing."]
-    body = '<div class="grid two">' + card("Deliverable", bullet_list(deliverable[:6]), "Submit") + card("Success check", bullet_list(success[:6]), "Verify") + '</div>'
-    pages.append(slide("Finish and verify", "How to know the work is complete", "Check the output before sharing or acting on it.", body, slug, n))
+    report_intro = deliverable[0] if deliverable[0].startswith("Submit one report") else ""
+    report_items = deliverable[1:] if report_intro else deliverable
+    file_name = (re.search(r"File name: (\S+?\.docx)", report_intro) or re.search(r"(.*)", "FirstName_W#_Keyword.docx")).group(1)
+    body = '<div class="grid one">' + card("One report for this session", bullet_list(report_items[:6]), "Submit") + '</div>'
+    pages.append(slide("Session report", "Write your session report",
+        f"Use Report_template.docx in Microsoft Word. Save it as {file_name} and upload it to iLearn by 23:59 on class day." if report_intro else "Submit this work after the session.",
+        body, slug, n)); n += 1
+    body = '<div class="grid one">' + card("Success check", bullet_list(success[:6]), "Verify") + '</div>'
+    pages.append(slide("Finish and verify", "How to know the work is complete", "Check your report before you hand it in.", body, slug, n))
 
     style = r'''
 <style>
@@ -387,6 +398,9 @@ def main() -> None:
     generated = []
     for num, title, section in sessions:
         slug = num.replace(".", "_")
+        if slug in CUSTOM_DECKS:
+            print(f"Session {num}: skipped, built by {CUSTOM_DECKS[slug]}")
+            continue
         if slug not in ART:
             raise RuntimeError(f"No approved illustration configured for Session {num}")
         html_path = SLIDES / f"session_{slug}_lecture.html"
