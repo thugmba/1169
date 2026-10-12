@@ -35,8 +35,8 @@ CHAT_CSS = r'''
 .bubble td + td { padding: 0 0 0 12px; border-left: 1px solid #c7d2fe; }
 .chat-input { border-top: 1px solid #e2e8f0; padding: 5px 12px; }
 .chat-input .ph { display: block; border: 1px solid #cbd5e1; border-radius: 20px; padding: 6px 16px; margin-right: 46px; color: #94a3b8; font-size: 17px; }
-.send { float: right; width: 32px; height: 32px; border-radius: 50%; background: #172033; position: relative; margin-top: 1px; }
-.send:after { content: ""; position: absolute; left: 12px; top: 9px; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.send { float: right; width: 32px; height: 32px; margin-top: 1px; }
+.send svg { display: block; }
 '''
 
 
@@ -73,5 +73,7 @@ def chat(text: str, kind: str = "good", label: str | None = None, cols: bool = F
             '<div class="chat"><div class="chat-bar"><span class="dot d1"></span><span class="dot d2"></span>'
             '<span class="dot d3"></span><span class="title">AI Chat</span></div>'
             f'<div class="chat-body"><div class="bubble"><div class="who">You</div>{inner}</div></div>'
-            '<div class="chat-input"><span class="send"></span><span class="ph">Message AI...</span></div>'
+            '<div class="chat-input"><span class="send">'
+            '<svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="12" fill="#172033"/>'
+            '<path d="M12 17V7M7.5 11.5L12 7l4.5 4.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ph">Message AI...</span></div>'
             "</div></div>")
