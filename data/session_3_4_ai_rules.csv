@@ -1,0 +1,5 @@
+rule,text
+1,Use AI only through the company's approved AI tool.
+2,"Never paste names, phone numbers, email addresses, account IDs, invoice or order numbers, or payment details into any AI tool."
+3,Replace personal details with placeholders such as [CUSTOMER] or [INVOICE].
+4,A person must review every AI draft before it is sent.

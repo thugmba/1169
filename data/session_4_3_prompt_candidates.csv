@@ -1,0 +1,4 @@
+prompt,task,minutes_per_task_without_AI,uses_per_month,reuse_ease_1_to_3,error_risk_1_to_3
+A,Daily support summary,10,20,3,1
+B,Weekly meeting recap,20,4,3,2
+C,Quarterly report outline,60,1,1,3

@@ -1,0 +1,9 @@
+week,day,orders,late_orders,scanners_charged_at_opening,charging_checklist_signed
+Last week,Mon,30,2,2 of 2,Yes
+Last week,Tue,28,3,2 of 2,Yes
+Last week,Wed,31,2,2 of 2,Yes
+Last week,Thu,29,1,2 of 2,Yes
+Last week,Fri,32,2,2 of 2,Yes
+This week,Mon,30,18,0 of 2,No
+This week,Tue,29,12,0 of 2,No
+This week,Wed,31,14,0 of 2,No

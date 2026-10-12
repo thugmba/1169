@@ -29,7 +29,7 @@ ART = {
     "2_1": ("session_2_1_bubble_tea_menu_hanji.png", "Which drink should we remove from the menu?"),
     "2_2": ("session_2_2_return_policy_hanji.png", "Does this AI reply follow our return policy?"),
     "2_3": ("session_2_3_coffee_cart_scope_hanji.png", "What can we fit into $4,000 and eight weeks?"),
-    "2_4": ("session_2_4_customer_profiles_hanji.png", "What would make this budgeting app useful to different users?"),
+    "2_4": ("session_2_4_budget_app_profiles_hanji.png", "What do our users really need from this app?"),
     "3_1": ("session_3_1_financial_analysis_hanji.png", "Why did sales rise while gross profit fell?"),
     "3_2": ("session_3_2_operations_hanji.png", "Why were 18 of 30 orders late?"),
     "3_3": ("session_3_3_hr_communication_hanji.png", "What skills does this support role actually need?"),
@@ -42,7 +42,16 @@ ART = {
 
 # Sessions whose deck needs a custom layout; their own script builds them.
 CUSTOM_DECKS = {"2_1": "scripts/build_session_2_1_deck.py", "2_2": "scripts/build_session_2_2_deck.py",
-                "2_3": "scripts/build_session_2_3_deck.py"}
+                "2_3": "scripts/build_session_2_3_deck.py",
+                "2_4": "scripts/build_session_2_4_deck.py",
+                "3_1": "scripts/build_standard_session_deck.py 3.1",
+                "3_2": "scripts/build_standard_session_deck.py 3.2",
+                "3_3": "scripts/build_standard_session_deck.py 3.3",
+                "3_4": "scripts/build_standard_session_deck.py 3.4",
+                "4_1": "scripts/build_standard_session_deck.py 4.1",
+                "4_2": "scripts/build_standard_session_deck.py 4.2",
+                "4_3": "scripts/build_standard_session_deck.py 4.3",
+                "4_4": "scripts/build_standard_session_deck.py 4.4"}
 
 REPLACEMENTS = {
     "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',

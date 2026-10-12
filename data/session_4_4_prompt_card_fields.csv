@@ -1,0 +1,8 @@
+field,question
+Task,What problem does the prompt solve?
+Intended user,Who should use it?
+Input,"What do I paste, and where?"
+Prompt,The exact template to copy
+Output format,What will the answer look like?
+Do not use when,When must I not use it?
+Human checks,Three yes/no checks before I share the output

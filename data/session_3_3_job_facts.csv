@@ -1,0 +1,8 @@
+type,item,detail
+Duty,Answer customer email questions,About 60% of the time
+Duty,Record case details in a spreadsheet,About 30% of the time
+Duty,Flag unresolved cases to the supervisor,About 10% of the time
+Required,Clear writing,Needed for answering email questions
+Required,Careful recordkeeping,Needed for recording case details
+Not required,A specific degree,Not needed for the duties
+Not required,Years of experience,Training is provided
