@@ -79,3 +79,13 @@
   font-size: inherit;
   color: inherit;
 }
+
+/* A prompt example (title, chat window, reasons) is wrapped in a blockquote.
+   The chat window already frames the prompt, so drop the quote bar and the
+   gray quote text color. */
+.markdown-body blockquote:has(.language-text) {
+  margin: 0 0 28px;
+  padding: 0;
+  border-left: none;
+  color: #24292e;
+}
