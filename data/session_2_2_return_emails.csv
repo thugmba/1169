@@ -1,0 +1,5 @@
+case,item,price_USD,days_since_delivery,customer_email
+A,Phone case,25.00,10,"I bought a phone case 10 days ago. It is still in the box, and I have my receipt. Can I return it?"
+B,Screen protector,15.00,1,"My screen protector arrived cracked yesterday. I can send a photo. What can you do?"
+C,Wireless earbuds,40.00,6,"I got the wireless earbuds 6 days ago. I opened them and used them. They work fine, but I changed my mind. Please refund me."
+D,Charging cable,30.00,,"I want a refund for my charging cable, but I lost the receipt."

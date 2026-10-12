@@ -27,7 +27,7 @@ ART = {
     "1_3": ("session_1_3_constraints_hanji.png", "How can we make this summary short, clear, and useful?"),
     "1_4": ("session_1_4_problem_hanji.png", "Should we test two more kiosks and keep staffed lanes open?"),
     "2_1": ("session_2_1_bubble_tea_menu_hanji.png", "Which drink should we remove from the menu?"),
-    "2_2": ("session_2_2_prompt_quality_hanji.png", "Does this reply follow our return policy?"),
+    "2_2": ("session_2_2_return_policy_hanji.png", "Does this AI reply follow our return policy?"),
     "2_3": ("session_2_3_project_scope_hanji.png", "Can we add juice without breaking our budget or deadline?"),
     "2_4": ("session_2_4_customer_profiles_hanji.png", "What would make this budgeting app useful to different users?"),
     "3_1": ("session_3_1_financial_analysis_hanji.png", "Why did sales rise while gross profit fell?"),
@@ -41,7 +41,7 @@ ART = {
 }
 
 # Sessions whose deck needs a custom layout; their own script builds them.
-CUSTOM_DECKS = {"2_1": "scripts/build_session_2_1_deck.py"}
+CUSTOM_DECKS = {"2_1": "scripts/build_session_2_1_deck.py", "2_2": "scripts/build_session_2_2_deck.py"}
 
 REPLACEMENTS = {
     "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"',
