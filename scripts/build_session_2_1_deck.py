@@ -16,6 +16,8 @@ from pathlib import Path
 from pypdf import PdfReader
 from weasyprint import HTML
 
+from chat_box import CHAT_CSS, chat
+
 ROOT = Path(__file__).resolve().parents[1]
 MD_PATH = ROOT / "1169.md"
 CSV_PATH = ROOT / "data" / "session_2_1_bubble_tea_sales.csv"
@@ -94,10 +96,6 @@ def table(head: list[str], rows: list[list[str]], highlight: dict[int, str] | No
         cls = f' class="{highlight[i]}"' if highlight and i in highlight else ""
         out += f"<tr{cls}>" + "".join(f"<td>{inline(c)}</td>" for c in row) + "</tr>"
     return out + "</tbody></table>"
-
-
-def pre(text: str, kind: str, cols: bool = False) -> str:
-    return f'<div class="prompt {kind}{" cols" if cols else ""}"><pre>{esc(text)}</pre></div>'
 
 
 def build() -> str:
@@ -204,12 +202,12 @@ def build() -> str:
     for idx, ex in enumerate(examples):
         poor = ex["title"].startswith("Poor")
         kind = "weak" if poor else "good"
-        label = "Prompt to avoid" if poor else "Prompt to use"
         title, _, note = ex["title"].partition(" (")
         note = note.rstrip(")")
+        label = f"{title} - do not use" if poor else f"{title} - copy and send"
         if len(ex["prompt"].splitlines()) > 12:
             add("Compare examples", title, (note + ". " if note else "") + "Copy this prompt exactly.",
-                pre(ex["prompt"], kind, cols=True))
+                chat(ex["prompt"], kind, label, cols=True))
             add("Compare examples", f"Why {title.lower()} works", "Each part of the prompt solves one problem.",
                 '<div class="grid one">' + card("Why it works", "What each part does", ul(ex["reasons"]), "good") + "</div>")
             continue
@@ -218,7 +216,7 @@ def build() -> str:
             right += card("What the AI often answers", "A typical result", f"<p>{inline(ex['often'])}</p>", "alert")
         right += card("Why it is weak" if poor else "Why it works", "Reasons", ul(ex["reasons"]), kind if not poor else "")
         add("Compare examples", title, "Same bubble tea data. Compare what the prompt asks for.",
-            '<div class="grid two">' + card(label, "The prompt", pre(ex["prompt"], kind), "")
+            '<div class="grid two">' + chat(ex["prompt"], kind, label)
             + f'<div class="stack">{right}</div></div>')
 
     add("Hour 2 | Exercise 1", "Exercise 1: Compare a poor prompt with an improved prompt",
@@ -246,11 +244,11 @@ def build() -> str:
             "Four drinks use milk: Brown Sugar Milk Tea, Classic Milk Tea, Matcha Latte, and Taro Smoothie.",
             "Their ingredient cost rises by **$0.50 per cup**.",
             "Mango Fruit Tea has no milk. Its cost does not change."]))
-        + card("Prompt template", "Replace each part in [square brackets]", pre(template, "plain")) + "</div>")
+        + chat(template, "plain", "Template - replace each [part], then send") + "</div>")
 
     add("Hour 3 | Exercise 2", "Part A: Worked example (run it)",
         "In the chat from Exercise 1, copy and send this completed prompt.",
-        '<div class="grid two">' + card("Completed template", "The prompt", pre(worked, "good"))
+        '<div class="grid two">' + chat(worked, "good", "Part A - copy and send")
         + card("Check the answer", "Taro Smoothie row", '<p class="formula">$6.00 - $5.30 = $0.70 per cup</p>'
                '<p class="formula">110 x $0.70 = $77.00</p>'
                + ul(["Taro Smoothie is still the lowest, so the decision holds.",
@@ -283,7 +281,7 @@ def build() -> str:
 
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
             '<title>Session 2.1: Read Business Data Before Deciding - Lecture Notes</title>'
-            f"{STYLE}</head><body>" + "".join(pages) + "</body></html>")
+            f"{STYLE}<style>{CHAT_CSS}</style></head><body>" + "".join(pages) + "</body></html>")
 
 
 STYLE = r'''

@@ -6,10 +6,13 @@ from __future__ import annotations
 import html
 import csv
 import re
+import textwrap
 from pathlib import Path
 
 from pypdf import PdfReader
 from weasyprint import HTML
+
+from chat_box import CHAT_CSS, chat
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -138,7 +141,7 @@ def prompt_examples(section: str, blocks: list[tuple[str, str]]) -> tuple[list[s
         before = text[max(0, match.start() - 420):match.start()]
         labels = list(re.finditer(r"(?i)\b(weak|strong|poor|improved|good)(?:\s+example)?(?:\s+[12])?\b", before))
         label = labels[-1].group(1).lower() if labels else ""
-        snippet = match.group(1).strip()
+        snippet = textwrap.dedent(match.group(1)).strip("\n")
         for old, new in REPLACEMENTS.items():
             snippet = snippet.replace(old, new)
         if len(snippet) > 1000:
@@ -311,12 +314,24 @@ def make_deck(num: str, title: str, section: str) -> str:
             pages.append(slide("Lecture concepts", "What students need to understand", "Key explanations taken from the active session lesson.", body, slug, n)); n += 1
 
     poor, good = prompt_examples(section, blocks)
-    if poor:
-        body = '<div class="grid two">' + "".join(card(f"Weak example {i+1}", f'<div class="prompt-box weak"><pre>{esc(p)}</pre></div>', "Avoid") for i, p in enumerate(poor)) + '</div>'
-        pages.append(slide("Compare examples", "What makes a prompt weak?", "These examples come from the current session scenario.", body, slug, n)); n += 1
-    if good:
-        body = '<div class="grid two">' + "".join(card(f"Improved example {i+1}", f'<div class="prompt-box good"><pre>{esc(p)}</pre></div>', "Use") for i, p in enumerate(good)) + '</div>'
-        pages.append(slide("Compare examples", "A clearer, safer prompt", "Keep the source, task, constraints, and output check visible.", body, slug, n)); n += 1
+
+    def visual_lines(text: str, width: int) -> int:
+        return sum(max(1, -(-len(line) // width)) for line in text.splitlines())
+
+    for kind, prompts, name, title_text, subtitle in (
+            ("weak", poor, "Poor prompt", "What makes a prompt weak?", "These examples come from the current session scenario."),
+            ("good", good, "Improved prompt", "A clearer, safer prompt", "Keep the source, task, constraints, and output check visible.")):
+        if not prompts:
+            continue
+        action = "do not use" if kind == "weak" else "copy and send"
+        boxes = [(f"{name} {i + 1} - {action}", p) for i, p in enumerate(prompts)]
+        if all(visual_lines(p, 52) <= 13 for _, p in boxes):
+            body = '<div class="grid two">' + "".join(chat(p, kind, label) for label, p in boxes) + "</div>"
+            pages.append(slide("Compare examples", title_text, subtitle, body, slug, n)); n += 1
+            continue
+        for label, p in boxes:
+            body = chat(p, kind, label, cols=visual_lines(p, 105) > 13)
+            pages.append(slide("Compare examples", title_text, subtitle, body, slug, n)); n += 1
 
     exercise1 = pick(blocks, "Exercise 1") or pick(blocks, "How to Practice")
     exercise2 = pick(blocks, "Exercise 2")
@@ -365,10 +380,7 @@ main { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-bot
 .grid.two > .card { width: 50%; }
 .grid.one > .card { width: 100%; }
 .card { min-width: 0; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px 24px; background: #fbfbfa; overflow: hidden; }
-.prompt-box { margin-top: 8px; padding: 14px 16px; border: 1px solid #94a3b8; border-radius: 10px; background: #f1f5f9; }
-.prompt-box.weak { border-color: #fda4af; background: #fff1f2; }
-.prompt-box.good { border-color: #86efac; background: #ecfdf5; }
-.prompt-box pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 20px/1.25 'Courier New', monospace; color: #172033; }
+.grid.two > .chat-wrap { width: 50%; }
 .tag { margin: 0 0 8px; color: #991b1b; font-size: 17px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 h2 { margin: 0 0 12px; color: #172033; font: bold 30px/1.12 Georgia, 'Times New Roman', serif; }
 p, li { font-size: 24px; line-height: 1.28; }
@@ -386,7 +398,7 @@ pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 21px/1.28
 footer { height: .42in; flex-shrink: 0; border-top: 1px solid #cbd5e1; padding-top: 8px; display: flex; justify-content: space-between; color: #475569; font-size: 16px; }
 </style>'''
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
-            f'<title>Session {num}: {esc(title)} - Lecture Notes</title>{style}</head><body>'
+            f'<title>Session {num}: {esc(title)} - Lecture Notes</title>{style}<style>{CHAT_CSS}</style></head><body>'
             + "".join(pages) + "</body></html>")
 
 

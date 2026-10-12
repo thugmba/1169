@@ -1,0 +1,81 @@
+---
+---
+
+@import "jekyll-theme-primer";
+
+/* Prompts (```text blocks) look like an AI chat window, so students can see
+   that the text is typed or pasted into an AI chat box. */
+.markdown-body .language-text.highlighter-rouge {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  margin: 12px 0 16px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.markdown-body .language-text.highlighter-rouge::before {
+  content: "AI Chat";
+  display: block;
+  padding: 6px 12px 6px 64px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  background:
+    radial-gradient(circle at 18px 50%, #f87171 5px, transparent 6px),
+    radial-gradient(circle at 34px 50%, #fbbf24 5px, transparent 6px),
+    radial-gradient(circle at 50px 50%, #4ade80 5px, transparent 6px),
+    #f1f5f9;
+}
+
+.markdown-body .language-text.highlighter-rouge::after {
+  content: "Message AI...";
+  display: block;
+  padding: 9px 60px 9px 22px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #94a3b8;
+  background:
+    radial-gradient(circle at calc(100% - 28px) 50%, #172033 12px, transparent 13px),
+    #fff;
+}
+
+.markdown-body .language-text .highlight {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 0;
+  background: #fafafa;
+}
+
+.markdown-body .language-text pre.highlight {
+  margin: 0 0 0 4%;
+  padding: 8px 14px;
+  border: 1px solid #c7d2fe;
+  border-radius: 16px 16px 4px 16px;
+  background: #e8eefc;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #172033;
+}
+
+.markdown-body .language-text pre.highlight::before {
+  content: "You";
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #3730a3;
+}
+
+.markdown-body .language-text pre.highlight code {
+  padding: 0;
+  background: none;
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
