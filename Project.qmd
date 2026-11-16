@@ -59,40 +59,40 @@ This project uses the same methods you learned in class:
 
 Choose **one** app from the list below. **Each student must choose a different app.** You will choose your app in class on **Monday, November 16, 2026**. The final list of students and apps will be posted on **iLearn**.
 
-Use the **Package ID** and **Review country** in the table when you download reviews.
+All apps are popular in the United States, so most of their reviews are in English. Download the reviews from the **United States** Google Play store (country code **us**), and use the **Package ID** in the table.
 
-| # | App | Industry | Review country | Package ID |
-|---|---|---|---|---|
-| 1 | Grab | Ride-hailing and delivery | Singapore (sg) | com.grabtaxi.passenger |
-| 2 | Gojek | Ride-hailing and delivery | Indonesia (id) | com.gojek.app |
-| 3 | foodpanda | Food delivery | Taiwan (tw) | com.global.foodpanda.android |
-| 4 | Uber Eats | Food delivery | Taiwan (tw) | com.ubercab.eats |
-| 5 | Shopee PH | Online shopping | Philippines (ph) | com.shopee.ph |
-| 6 | Lazada | Online shopping | Malaysia (my) | com.lazada.android |
-| 7 | Tokopedia | Online shopping | Indonesia (id) | com.tokopedia.tkpd |
-| 8 | TikTok | Social media and shopping | Philippines (ph) | com.zhiliaoapp.musically |
-| 9 | Temu | Cross-border shopping | Philippines (ph) | com.einnovation.temu |
-| 10 | SHEIN | Fashion shopping | Philippines (ph) | com.zzkko |
-| 11 | GCash | E-wallet | Philippines (ph) | com.globe.gcash.android |
-| 12 | DANA | E-wallet | Indonesia (id) | id.dana |
-| 13 | TrueMoney | E-wallet | Thailand (th) | th.co.truemoney.wallet |
-| 14 | AirAsia MOVE | Airline and travel | Malaysia (my) | com.airasia.mobile |
-| 15 | Agoda | Hotel booking | Thailand (th) | com.agoda.mobile.consumer |
-| 16 | Booking.com | Hotel booking | Thailand (th) | com.booking |
-| 17 | Traveloka | Travel booking | Indonesia (id) | com.traveloka.android |
-| 18 | Klook | Travel activities | Singapore (sg) | com.klook |
-| 19 | Airbnb | Home sharing | Thailand (th) | com.airbnb.android |
-| 20 | McDonald's | Fast food | Philippines (ph) | com.mcdonalds.mobileapp |
-| 21 | Starbucks | Coffee shop | Singapore (sg) | com.starbucks.mobilecard |
-| 22 | ChatGPT | AI assistant | Philippines (ph) | com.openai.chatgpt |
-| 23 | Google Gemini | AI assistant | Philippines (ph) | com.google.android.apps.bard |
-| 24 | Duolingo | Education | Vietnam (vn) | com.duolingo |
-| 25 | CapCut | Video editing | Vietnam (vn) | com.lemon.lvoverseas |
+| # | App | Industry | Package ID |
+|---|---|---|---|
+| 1 | Uber | Ride-hailing | com.ubercab |
+| 2 | Lyft | Ride-hailing | me.lyft.android |
+| 3 | DoorDash | Food delivery | com.dd.doordash |
+| 4 | Uber Eats | Food delivery | com.ubercab.eats |
+| 5 | Instacart | Grocery delivery | com.instacart.client |
+| 6 | Amazon Shopping | Online shopping | com.amazon.mShop.android.shopping |
+| 7 | Walmart | Retail shopping | com.walmart.android |
+| 8 | Target | Retail shopping | com.target.ui |
+| 9 | eBay | Online marketplace | com.ebay.mobile |
+| 10 | Temu | Cross-border shopping | com.einnovation.temu |
+| 11 | SHEIN | Fashion shopping | com.zzkko |
+| 12 | PayPal | Online payments | com.paypal.android.p2pmobile |
+| 13 | Venmo | Mobile payments | com.venmo |
+| 14 | Cash App | Mobile payments | com.squareup.cash |
+| 15 | Netflix | Video streaming | com.netflix.mediaclient |
+| 16 | Spotify | Music streaming | com.spotify.music |
+| 17 | TikTok | Social media | com.zhiliaoapp.musically |
+| 18 | CapCut | Video editing | com.lemon.lvoverseas |
+| 19 | Airbnb | Home sharing | com.airbnb.android |
+| 20 | Booking.com | Hotel booking | com.booking |
+| 21 | Ticketmaster | Event tickets | com.ticketmaster.mobile.android.na |
+| 22 | McDonald's | Fast food | com.mcdonalds.app |
+| 23 | Starbucks | Coffee shop | com.starbucks.mobilecard |
+| 24 | ChatGPT | AI assistant | com.openai.chatgpt |
+| 25 | Duolingo | Education | com.duolingo |
 
 Tips:
 
-- Apps 3 and 4, 15 and 16, and 22 and 23 compete in the same market. In your report, you may compare your app with its competitor in one or two sentences.
-- Apps 14, 20, and 25 have low star ratings, so they have many complaints. They are easier to analyze.
+- Apps 1 and 2, 3 and 4, 7 and 8, 10 and 11, 13 and 14, and 19 and 20 compete in the same market. In your report, you may compare your app with its competitor in one or two sentences.
+- Apps 13, 17, 18, 21, and 22 had star ratings below 4.0 on November 16, 2026, so they have many complaints. They are easier to analyze.
 
 ---
 
@@ -134,11 +134,11 @@ Learn these words before you start. Each example uses a food delivery app.
 
 ### Step 2: Download the Reviews
 
-Open Google Antigravity and send this prompt. Replace each [part] with the information from the app table.
+Open Google Antigravity and send this prompt. Replace [Package ID] and [app name] with the information from the app table.
 
 ```text
 Download the 200 newest Google Play reviews of the app [Package ID]
-for the country [country code] in English.
+for the country us in English.
 Save them as [app name]_reviews.csv with these columns:
 review_id, date, score, content, reply.
 Number the reviews R1, R2, R3, ... in the review_id column.
@@ -146,12 +146,12 @@ The reply column is the company's answer, if there is one.
 Do not include user names or profile pictures.
 ```
 
-**Worked example (Grab):**
+**Worked example (Uber Eats):**
 
 ```text
-Download the 200 newest Google Play reviews of the app com.grabtaxi.passenger
-for the country sg in English.
-Save them as grab_reviews.csv with these columns:
+Download the 200 newest Google Play reviews of the app com.ubercab.eats
+for the country us in English.
+Save them as uber_eats_reviews.csv with these columns:
 review_id, date, score, content, reply.
 Number the reviews R1, R2, R3, ... in the review_id column.
 The reply column is the company's answer, if there is one.
@@ -197,7 +197,7 @@ Analyze these app reviews and tell me the main problems.
 Start a **new chat**. Upload the file again and send **Improved Prompt 1**. Replace each [part].
 
 ```text
-Here are [number] Google Play reviews of the [app name] app from [country].
+Here are [number] Google Play reviews of the [app name] app from the United States.
 Each review has an ID (R1, R2, ...), a star score, and the text.
 Use only these reviews.
 Suggest 5 to 7 complaint categories.
@@ -288,7 +288,7 @@ Length: **at least 8 pages**, not counting the References and the Appendix. Save
 | **1. Introduction and Data** | The company and the app (with the Google Play link); why you chose it; the project question; your download date, number of reviews, and how many you deleted (not in English); your star score table from Step 3 |
 | **2. Method** | Poor Prompt 1, Improved Prompt 1, and Improved Prompt 2 with the one change you made; how you checked the categories; how you counted in Excel; how you checked 20 reviews by hand |
 | **3. Results** | Your final categories; your category table (count, share, low-star share); your agreement result; at least one place where the AI was wrong; the biggest problem with at least three quoted reviews; your judgment of the company's replies |
-| **4. Conclusion: "If I Ran This Company"** | Your one action and why; why you did not choose the other two; one hypothesis; one success measure; one limit of your data (for example, "Only 200 reviews from one country") |
+| **4. Conclusion: "If I Ran This Company"** | Your one action and why; why you did not choose the other two; one hypothesis; one success measure; one limit of your data (for example, "Only 200 reviews from the United States") |
 | **Appendix** | The full AI answers for every prompt, copied without changes |
 
 In Chapters 1 to 4, write in your own words. When you use the AI's words, put them in quotation marks and write "(ChatGPT)."
@@ -304,7 +304,7 @@ In Chapters 1 to 4, write in your own words. When you use the AI's words, put th
 - **Font:** Times New Roman 12 pt, line spacing 1.15
 - **Length:** at least 8 pages, not counting the References and the Appendix
 - **Chapters:** Use the headings in the template: 1. Introduction and Data, 2. Method, 3. Results, 4. Conclusion: "If I Ran This Company," References, and Appendix: AI Answers.
-- **Tables and figures:** Give each one a number and a title above it. Example: "Table 1 Star scores of the Grab reviews."
+- **Tables and figures:** Give each one a number and a title above it. Example: "Table 1 Star scores of the Uber Eats reviews."
 - **Prompts:** Copy each prompt exactly, and write its name above it (for example, "Improved Prompt 1").
 - **File:** Save as a PDF.
 
