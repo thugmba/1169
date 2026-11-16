@@ -2601,8 +2601,51 @@ Do not include user names or profile pictures.</code></pre>
 <h3 data-number="5.3" class="anchored" data-anchor-id="step-3-read-the-data-first"><span class="header-section-number">5.3</span> Step 3: Read the Data First</h3>
 <p>Do this <strong>before</strong> you use ChatGPT.</p>
 <ul>
-<li>Count how many reviews have 1, 2, 3, 4, and 5 stars. In Excel, use <code>=COUNTIF(C:C,1)</code>, <code>=COUNTIF(C:C,2)</code>, and so on.</li>
-<li>Read 20 low-star reviews. Write three complaints you see often.</li>
+<li><p>Count how many reviews have 1, 2, 3, 4, and 5 stars. In your Excel file, <strong>column C is the star score</strong> (A review_id, B date, C score, D content, E reply). Type these formulas in empty cells:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you count</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of 1-star reviews</td>
+<td><code>=COUNTIF(C:C,1)</code></td>
+</tr>
+<tr class="even">
+<td>Number of 2-star reviews</td>
+<td><code>=COUNTIF(C:C,2)</code></td>
+</tr>
+<tr class="odd">
+<td>Number of 3-star reviews</td>
+<td><code>=COUNTIF(C:C,3)</code></td>
+</tr>
+<tr class="even">
+<td>Number of 4-star reviews</td>
+<td><code>=COUNTIF(C:C,4)</code></td>
+</tr>
+<tr class="odd">
+<td>Number of 5-star reviews</td>
+<td><code>=COUNTIF(C:C,5)</code></td>
+</tr>
+<tr class="even">
+<td>Total number of reviews</td>
+<td><code>=COUNT(C:C)</code></td>
+</tr>
+<tr class="odd">
+<td>Share of 1-star reviews</td>
+<td><code>=COUNTIF(C:C,1)/COUNT(C:C)</code> (format the cell as %)</td>
+</tr>
+</tbody>
+</table>
+<p><code>=COUNTIF(C:C,1)</code> means “count the cells in column C that are equal to 1.” <code>=COUNT(C:C)</code> counts all the numbers in column C, so it gives the number of reviews left after you deleted the ones that are not in English. The heading “score” is not a number, so it is not counted.</p></li>
+<li><p>Read 20 low-star reviews. Write three complaints you see often.</p></li>
 </ul>
 <p><strong>Example (fictional numbers):</strong></p>
 <table class="caption-top table">
@@ -2678,11 +2721,58 @@ If the review has no complaint, write &quot;No complaint.&quot;
 Return a table with three columns: review_id, score, category.
 Categories:
 [paste your final categories with definitions]</code></pre>
-<p>Copy the table into a new column in your Excel file. Then check the AI yourself:</p>
+<p>Put the AI’s categories into your Excel file:</p>
+<ul>
+<li>Check that the AI table lists the reviews in the same order as your file (R1, R2, R3, …) and that no review is missing.</li>
+<li>Copy <strong>only the category column</strong> into <strong>column F</strong> of your file, next to the matching review. Type the heading “category” in cell F1.</li>
+</ul>
+<p>Then check the AI yourself:</p>
 <ol type="1">
-<li><strong>Count each category in Excel.</strong> Use <code>=COUNTIF(F:F,&quot;Refund problem&quot;)</code>. For low-star reviews, use <code>=COUNTIFS(C:C,&quot;&lt;=2&quot;,F:F,&quot;Refund problem&quot;)</code>. Compare your counts with any counts the AI gave.</li>
-<li><strong>Check 20 reviews by hand.</strong> Take every tenth review: R10, R20, R30, … R200. Read each review and choose a category yourself, <strong>before</strong> you look at the AI’s category. Then compare.</li>
-<li><strong>Calculate the agreement.</strong> Agreement = number of matches ÷ 20.</li>
+<li><p><strong>Count each category in Excel.</strong> Column F is the category, and column C is the star score. Replace “Refund problem” with each of your category names, written exactly as in column F:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you count</th>
+<th>Formula</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Count</td>
+<td><code>=COUNTIF(F:F,&quot;Refund problem&quot;)</code></td>
+<td>Count the cells in column F that say “Refund problem”</td>
+</tr>
+<tr class="even">
+<td>Share</td>
+<td><code>=COUNTIF(F:F,&quot;Refund problem&quot;)/COUNT(C:C)</code></td>
+<td>The count divided by the number of reviews (format as %)</td>
+</tr>
+<tr class="odd">
+<td>Low-star count</td>
+<td><code>=COUNTIFS(C:C,&quot;&lt;=2&quot;,F:F,&quot;Refund problem&quot;)</code></td>
+<td>Count the reviews with 1 or 2 stars <strong>and</strong> the category “Refund problem”</td>
+</tr>
+<tr class="even">
+<td>All low-star reviews</td>
+<td><code>=COUNTIF(C:C,&quot;&lt;=2&quot;)</code></td>
+<td>Count all reviews with 1 or 2 stars</td>
+</tr>
+<tr class="odd">
+<td>Low-star share</td>
+<td><code>=COUNTIFS(C:C,&quot;&lt;=2&quot;,F:F,&quot;Refund problem&quot;)/COUNTIF(C:C,&quot;&lt;=2&quot;)</code></td>
+<td>The low-star count divided by all low-star reviews (format as %)</td>
+</tr>
+</tbody>
+</table>
+<p>Compare your counts with any counts the AI gave.</p></li>
+<li><p><strong>Check 20 reviews by hand.</strong> Take every tenth review: R10, R20, R30, … R200. Read each review and choose a category yourself, <strong>before</strong> you look at the AI’s category. Then compare.</p></li>
+<li><p><strong>Calculate the agreement.</strong> Agreement = number of matches ÷ 20.</p></li>
 </ol>
 <p>If the agreement is below 70%, improve your prompt by <strong>changing one thing</strong>, such as a clearer category definition. Run it again and compare. Write down what you changed and the new agreement. This is <strong>Improved Prompt 2</strong>.</p>
 <p><strong>Example (fictional numbers):</strong></p>

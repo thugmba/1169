@@ -170,7 +170,19 @@ If the download does not work, try again once. If it still does not work, ask th
 
 Do this **before** you use ChatGPT.
 
-- Count how many reviews have 1, 2, 3, 4, and 5 stars. In Excel, use `=COUNTIF(C:C,1)`, `=COUNTIF(C:C,2)`, and so on.
+- Count how many reviews have 1, 2, 3, 4, and 5 stars. In your Excel file, **column C is the star score** (A review_id, B date, C score, D content, E reply). Type these formulas in empty cells:
+
+  | What you count | Formula |
+  |---|---|
+  | Number of 1-star reviews | `=COUNTIF(C:C,1)` |
+  | Number of 2-star reviews | `=COUNTIF(C:C,2)` |
+  | Number of 3-star reviews | `=COUNTIF(C:C,3)` |
+  | Number of 4-star reviews | `=COUNTIF(C:C,4)` |
+  | Number of 5-star reviews | `=COUNTIF(C:C,5)` |
+  | Total number of reviews | `=COUNT(C:C)` |
+  | Share of 1-star reviews | `=COUNTIF(C:C,1)/COUNT(C:C)` (format the cell as %) |
+
+  `=COUNTIF(C:C,1)` means "count the cells in column C that are equal to 1." `=COUNT(C:C)` counts all the numbers in column C, so it gives the number of reviews left after you deleted the ones that are not in English. The heading "score" is not a number, so it is not counted.
 - Read 20 low-star reviews. Write three complaints you see often.
 
 **Example (fictional numbers):**
@@ -228,9 +240,24 @@ Categories:
 [paste your final categories with definitions]
 ```
 
-Copy the table into a new column in your Excel file. Then check the AI yourself:
+Put the AI's categories into your Excel file:
 
-1. **Count each category in Excel.** Use `=COUNTIF(F:F,"Refund problem")`. For low-star reviews, use `=COUNTIFS(C:C,"<=2",F:F,"Refund problem")`. Compare your counts with any counts the AI gave.
+- Check that the AI table lists the reviews in the same order as your file (R1, R2, R3, ...) and that no review is missing.
+- Copy **only the category column** into **column F** of your file, next to the matching review. Type the heading "category" in cell F1.
+
+Then check the AI yourself:
+
+1. **Count each category in Excel.** Column F is the category, and column C is the star score. Replace "Refund problem" with each of your category names, written exactly as in column F:
+
+   | What you count | Formula | What it means |
+   |---|---|---|
+   | Count | `=COUNTIF(F:F,"Refund problem")` | Count the cells in column F that say "Refund problem" |
+   | Share | `=COUNTIF(F:F,"Refund problem")/COUNT(C:C)` | The count divided by the number of reviews (format as %) |
+   | Low-star count | `=COUNTIFS(C:C,"<=2",F:F,"Refund problem")` | Count the reviews with 1 or 2 stars **and** the category "Refund problem" |
+   | All low-star reviews | `=COUNTIF(C:C,"<=2")` | Count all reviews with 1 or 2 stars |
+   | Low-star share | `=COUNTIFS(C:C,"<=2",F:F,"Refund problem")/COUNTIF(C:C,"<=2")` | The low-star count divided by all low-star reviews (format as %) |
+
+   Compare your counts with any counts the AI gave.
 2. **Check 20 reviews by hand.** Take every tenth review: R10, R20, R30, ... R200. Read each review and choose a category yourself, **before** you look at the AI's category. Then compare.
 3. **Calculate the agreement.** Agreement = number of matches ÷ 20.
 
