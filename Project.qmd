@@ -47,7 +47,7 @@ This project uses the same methods you learned in class:
 
 ### AI Use Rule
 
-- You **may** use AI to collect data (Google Antigravity) and to analyze data (ChatGPT).
+- You **may** use AI to collect data and draw charts (Google Antigravity), and to analyze data (ChatGPT).
 - You **may not** use AI to write, rewrite, translate, or correct any part of your report. You may use only the **spelling and grammar check in Microsoft Word** (Review > Spelling & Grammar). Do not use Copilot or "Rewrite" suggestions in Word.
 - You **may** use an AI tool to make your slides. If you do, show the AI tool's name and your prompts on the title slide.
 - Simple English is fine. Your own words matter more than perfect grammar.
@@ -196,6 +196,34 @@ Do this **before** you use ChatGPT.
 | 1 | 65 | 32.5% |
 | Total | 200 | 100% |
 
+Then ask **Google Antigravity** to draw a **pie chart** of the star scores, so the reader sees the split at a glance. Open Antigravity in the folder with your CSV file and send this prompt. Replace each [part].
+
+```text
+Use the file [app name]_reviews.csv.
+Count how many reviews have 1, 2, 3, 4, and 5 stars in the score column.
+Draw a pie chart of these counts, with the slices in order from 5 stars to 1 star.
+Use blue for 4 and 5 stars, gray for 3 stars, and orange and red for 2 and 1 stars.
+Label each slice with the star score, the count, and the percent.
+Save the chart as [app name]_star_pie.png.
+Then print the five counts and the total so I can check them.
+```
+
+**Worked example (Uber Eats):**
+
+```text
+Use the file uber_eats_reviews.csv.
+Count how many reviews have 1, 2, 3, 4, and 5 stars in the score column.
+Draw a pie chart of these counts, with the slices in order from 5 stars to 1 star.
+Use blue for 4 and 5 stars, gray for 3 stars, and orange and red for 2 and 1 stars.
+Label each slice with the star score, the count, and the percent.
+Save the chart as uber_eats_star_pie.png.
+Then print the five counts and the total so I can check them.
+```
+
+Check the chart yourself: the five counts and the total must be the **same** as your Excel table. If a number is different, find out why (for example, the file still has a review that is not in English) and fix it before you use the chart. In your report, give the chart a number and a title above it, for example "Figure 1 Star scores of the Uber Eats reviews."
+
+![Example pie chart of star scores (fictional numbers from the table above)](images/project_star_pie_example.png){#fig-star-pie width=70%}
+
 **Submit Chapter 1 (Week 10: Friday, November 20, 2026, 5 pm).**
 
 ### Step 4: Make the Categories with ChatGPT
@@ -312,7 +340,7 @@ Length: **at least 8 pages**, not counting the References and the Appendix. Save
 
 | Chapter | What to write |
 |---|---|
-| **1. Introduction and Data** | The company and the app (with the Google Play link); why you chose it; the project question; your download date, number of reviews, and how many you deleted (not in English); your star score table from Step 3 |
+| **1. Introduction and Data** | The company and the app (with the Google Play link); why you chose it; the project question; your download date, number of reviews, and how many you deleted (not in English); your star score table and pie chart from Step 3 |
 | **2. Method** | Poor Prompt 1, Improved Prompt 1, and Improved Prompt 2 with the one change you made; how you checked the categories; how you counted in Excel; how you checked 20 reviews by hand |
 | **3. Results** | Your final categories; your category table (count, share, low-star share); your agreement result; at least one place where the AI was wrong; the biggest problem with at least three quoted reviews; your judgment of the company's replies |
 | **4. Conclusion: "If I Ran This Company"** | Your one action and why; why you did not choose the other two; one hypothesis; one success measure; one limit of your data (for example, "Only 200 reviews from the United States") |
@@ -348,7 +376,7 @@ Suggested slides:
 |---|---|---|---|
 | 1 | Title | Your app, your name, and your student ID. If you used an AI tool for the slides, also the tool's name and your prompts | 1:00 |
 | 2 | App Overview | The company, what the app does, and why you chose it | |
-| 3 | Data | The download date, the number of reviews, and the star score table | |
+| 3 | Data | The download date, the number of reviews, and the star score pie chart | |
 | 4 | Complaint Categories | Your final categories, each with a short definition | 2:30 |
 | 5 | Category Table | Count, share, and low-star share for each category | |
 | 6 | How I Improved the Prompt | Poor Prompt 1 compared with Improved Prompt 1, and the one change in Improved Prompt 2 | |
@@ -377,7 +405,7 @@ Use short phrases, not long sentences. Every number on a slide must come from yo
 
 | Section | Time |
 |---|---|
-| App overview and data: the company, the app, the reviews you downloaded, and the star score table | 1:00 |
+| App overview and data: the company, the app, the reviews you downloaded, and the star score pie chart | 1:00 |
 | Review analysis: the categories, your category table, how you checked the AI, and where the AI was wrong | 2:30 |
 | Recommendation: "If I Ran This Company," with the biggest problem, your one action, and its evidence | 1:00 |
 | Summary | 0:30 |
@@ -427,7 +455,7 @@ Chapter 1 must include:
 - [ ] Why you chose this app
 - [ ] The project question
 - [ ] Your download date, the number of reviews, and how many reviews you deleted (not in English)
-- [ ] Your star score table (Step 3)
+- [ ] Your star score table and pie chart (Step 3)
 
 Do **not** submit Chapters 2 to 4 yet.
 
