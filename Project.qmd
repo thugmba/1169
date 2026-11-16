@@ -374,7 +374,7 @@ Suggested slides:
 
 | Slide | Title | What to show | Time |
 |---|---|---|---|
-| 1 | Title | Your app, your name, and your student ID. If you used an AI tool for the slides, also the tool's name and your prompts | 1:00 |
+| 1 | Title | Your app, your name, and your student ID. If you used an AI tool for the slides, also each tool's name and version and your prompts | 1:00 |
 | 2 | App Overview | The company, what the app does, and why you chose it | |
 | 3 | Data | The download date, the number of reviews, and the star score pie chart | |
 | 4 | Complaint Categories | Your final categories, each with a short definition | 2:30 |
@@ -385,9 +385,15 @@ Suggested slides:
 | 9 | If I Ran This Company | Your one action, one hypothesis, and one success measure | |
 | 10 | Summary | Three short points | 0:30 |
 
-**AI tools for slides:** If you used an AI tool to make the slides, show the AI tool's name and your prompts on the title slide, as in @fig-title-slide.
+**AI tools for slides:** If you used an AI tool to make the slides, write the AI use on the title slide, as in @fig-title-slide. Give as much detail as you can:
 
-![Example title slide: title, author, and AI use (fictional student; the prompts are only examples)](images/project_title_slide_example.png){#fig-title-slide width=100%}
+- **Tool and version:** the name of each AI tool and its version or model, as the tool shows it. In ChatGPT, the model name is in the menu at the top of the chat (for example, "GPT-5.1"). If the tool shows no version, write "web app" or "mobile app" and your plan (Free or Plus).
+- **Date and job:** the date you used the tool and what it did (for example, "slide text" or "slide design").
+- **Every prompt, in order:** copy each prompt exactly as you typed it, and number it. Write which tool you sent it to. Include short follow-up prompts too, such as "Make the title on slide 4 shorter."
+- **Pasted text:** do not copy long text you pasted into a prompt (for example, your report outline). Write what it was in square brackets, such as "[my report outline pasted here]."
+- **Too many prompts:** if they do not fit on the title slide, write "AI use: see the last slide" on the title slide and put all the prompts on one extra slide at the end.
+
+![Example title slide: title, author, and AI use with each tool's version and every prompt (fictional student; the tools, versions, and prompts are only examples)](images/project_title_slide_example.png){#fig-title-slide width=100%}
 
 Use short phrases, not long sentences. Every number on a slide must come from your own Excel counts, even if an AI tool made the slides. Check every slide before you submit.
 
