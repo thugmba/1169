@@ -415,6 +415,7 @@ Practice your presentation many times to stay within 5 minutes. Presentations wi
 ### Presentation Video
 
 - Record your 5-minute presentation in English.
+- **Length:** 5 minutes. A video from **4 minutes 50 seconds to 5 minutes 10 seconds** is accepted. A video shorter or longer than this will **not be accepted**. Check the length before you upload it.
 - **Only you need to be in the video:** your face must be visible throughout. Slides are not needed in the video.
 - **Sample video:** [A Plan Is Not a Strategy](https://youtu.be/iuYlGRnC7J8) (Harvard Business Review; @fig-sample-video). Watch it for the format:
   - One speaker, framed from the waist up, in the middle of the screen.
