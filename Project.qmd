@@ -344,7 +344,8 @@ Length: **at least 8 pages**, not counting the References and the Appendix. Save
 | **2. Method** | Poor Prompt 1, Improved Prompt 1, and Improved Prompt 2 with the one change you made; how you checked the categories; how you counted in Excel; how you checked 20 reviews by hand |
 | **3. Results** | Your final categories; your category table (count, share, low-star share); your agreement result; at least one place where the AI was wrong; the biggest problem with at least three quoted reviews; your judgment of the company's replies |
 | **4. Conclusion: "If I Ran This Company"** | Your one action and why; why you did not choose the other two; one hypothesis; one success measure; one limit of your data (for example, "Only 200 reviews from the United States") |
-| **Appendix** | The full AI answers for every prompt, copied without changes |
+| **References** | Every link you used, with the date you opened it |
+| **Appendix: AI Answers** | The full AI answers for every prompt, copied without changes |
 
 In Chapters 1 to 4, write in your own words. When you use the AI's words, put them in quotation marks and write "(ChatGPT)."
 
@@ -354,7 +355,8 @@ In Chapters 1 to 4, write in your own words. When you use the AI's words, put th
 
 ### Report Format
 
-- **Template:** Download the [Report Template](template.docx) and write your report in Microsoft Word.
+- **Template:** Download the [Report Template](template.docx) and write your report in Microsoft Word. Replace the guidance text under each heading with your own writing.
+- **First page:** Your report title, then your first name and student ID (for example, "James, S1234567"), as in the template.
 - **Paper:** A4, with the margins in the template
 - **Font:** Times New Roman 12 pt, line spacing 1.15
 - **Length:** at least 8 pages, not counting the References and the Appendix
@@ -469,7 +471,7 @@ Do **not** submit Chapters 2 to 4 yet.
 
 | What to submit | File name |
 |---|---|
-| Final report, Chapters 1 to 4 and the Appendix (PDF) | `FirstName_StudentID_Report.pdf` |
+| Final report, Chapters 1 to 4, References, and the Appendix (PDF) | `FirstName_StudentID_Report.pdf` |
 | Slides, at least 10 slides (PDF) | `FirstName_StudentID_Slides.pdf` |
 | Link to your 5-minute presentation video (Google Drive) | Paste the link in iLearn |
 | Your review file with your categories (CSV) | `FirstName_StudentID_Reviews.csv` |
@@ -480,7 +482,8 @@ The final report must include:
 - [ ] **Chapter 2: Method**
 - [ ] **Chapter 3: Results**
 - [ ] **Chapter 4: Conclusion: "If I Ran This Company"**
-- [ ] **Appendix:** the full AI answers for every prompt
+- [ ] **References:** every link you used, with the date you opened it
+- [ ] **Appendix: AI Answers:** the full AI answers for every prompt
 
 See **Report Structure** for what to write in each chapter.
 
