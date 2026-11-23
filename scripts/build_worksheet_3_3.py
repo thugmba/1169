@@ -157,6 +157,8 @@ def box(lines: list[str], color: str, label: str | None = None, mono: bool = Fal
 
 
 def prompt(lines: list[str], label: str = "Copy and send this prompt:") -> None:
+    if lines[-1] != "Answer in English.":
+        lines = lines + ["Answer in English."]
     box(lines, GRAY_BOX, label, mono=True)
 
 
@@ -267,17 +269,18 @@ table(["First name", "Student ID", "Date"], [["", "", ""]], fill=INPUT_BOX, heig
 doc.add_paragraph("How to Use This Worksheet", style="Heading 1")
 bullets([
     "Do the steps **in order**. Each step says what to do, gives a prompt to copy, and shows Leo's example.",
-    "**Gray boxes** are prompts. Copy them into ChatGPT exactly. Change only the words in [square brackets].",
+    "**AI rule:** use only the course AI chat at **https://chat.ithu.tw/**. End **every** prompt with \"Answer in English.\" (the gray boxes already have it).",
+    "**Gray boxes** are prompts. Copy them into the AI exactly. Change only the words in [square brackets].",
     "**Blue boxes** are Leo's example. Use them to see what a good answer looks like.",
     "**\u270f WRITE HERE** (orange label, yellow cells) marks every place you must fill in. There are 14 places. You do not write anywhere else.",
     "**The AI does all the grading.** You check the AI once in Step 6 and once in Step 10.",
-    "Do not type your name, student ID, phone number, or address into ChatGPT.",
+    "Do not type your name, student ID, phone number, or address into the AI.",
     "**Submit:** save this file as `FirstName_StudentID_W11_Worksheet.docx` (for example, "
     "`James_S1234567_W11_Worksheet.docx`) and upload it to **iLearn** by **23:59 today**.",
 ])
 
 doc.add_paragraph("The Two Grading Rules", style="Heading 1")
-para("You do not grade anything yourself. You paste these rules into ChatGPT, and the AI grades. "
+para("You do not grade anything yourself. You paste these rules into the AI, and the AI grades. "
      "Read them so that you understand the grade the AI gives.")
 para("**Rule 1: Job description grade.** The AI checks five criteria. Each one is Pass or Fail.")
 table(["#", "Criterion", "Pass when..."], [
@@ -328,7 +331,7 @@ table(["Job title", "Company type", "Why I want this job (one sentence)"], [["",
       fill=INPUT_BOX, height_pt=40, widths=[120, 110, 220], write="Step 1: your job")
 
 step("Step 2. Poor Prompt 1, then grade it", 10, [
-    "Open ChatGPT and start a new chat. This is **Chat A**. Send Poor Prompt 1 with your job title.",
+    "Open the AI (https://chat.ithu.tw/) and start a new chat. This is **Chat A**. Send Poor Prompt 1 with your job title.",
     "Copy the AI's whole job description.",
     "Start a **new chat**. Copy the grading prompt G1 below, paste the job description at the end, and send it.",
     "Write the grade and the numbers of the criteria that failed in the table at the end of Step 5.",
@@ -368,7 +371,7 @@ step("Step 5. Improved Prompt 2, then grade it", 10, [
     "In **Chat A**, send Improved Prompt 2.",
     "Grade the result with G1 in a **new chat**.",
     "If the grade is not A, tell Chat A which criterion failed and ask it to fix it. Example: "
-    "\"Criterion 1 failed: the shares add up to 90%. Fix it.\" Grade it again.",
+    "\"Criterion 1 failed: the shares add up to 90%. Fix it. Answer in English.\" Grade it again.",
 ])
 prompt(["Add one more column: the evidence that proves each requirement (for example, \"made a table with COUNTIF in a class project\").",
         "Show the final result as a table:",
@@ -465,8 +468,8 @@ table(["#", "Fact added", "Total points", "Match %", "Grade", "Why it changed (o
 step("Step 10. Check the AI's math", 5, [
     "Look at the AI's last table. Add the Points column yourself with a calculator.",
     "Divide by your maximum points and multiply by 100.",
-    "If your number is different, send: \"Your total is wrong. Add the Points column again.\"",
-    "If a row has points but no quoted fact, send: \"Row [requirement] has no quoted fact. Score it again.\"",
+    "If your number is different, send: \"Your total is wrong. Add the Points column again. Answer in English.\"",
+    "If a row has points but no quoted fact, send: \"Row [requirement] has no quoted fact. Score it again. Answer in English.\"",
 ])
 example(["Leo: 2 + 1 + 0 + 1 + 0.5 = 4.5. 4.5 ÷ 8 × 100 = 56%. Same as the AI: Yes."])
 table(["My total points", "÷ maximum points", "× 100 = Match %", "Same as the AI? (Yes/No)"],

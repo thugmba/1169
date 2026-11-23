@@ -183,6 +183,11 @@ def build(num: str) -> str:
         '<div class="grid three">' + "".join(
             card(f"Step {i}", name, f"<p>{md_inline(text)}</p>") for i, (name, text) in enumerate(steps, 1)) + "</div>")
 
+    # Optional AI tool rule
+    if "AI tool rule" in bl:
+        add("Rule for this session", "Which AI to use and how", "Follow this rule for every prompt today.",
+            '<div class="grid one">' + card("Rule", "AI tool rule", f"<p>{md_inline(bl['AI tool rule'].strip())}</p>", "alert") + "</div>")
+
     # Practice data
     practice = dedent(pick(bl, "Practice data"))
     groups: list[tuple[str, list]] = []
