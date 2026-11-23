@@ -292,6 +292,9 @@ def build(num: str) -> str:
     ex1 = dedent(bl[ex1_key])
     steps_md, _, key_md = ex1.partition("**Answer key:**")
     steps1 = [v for k, v in elements(steps_md) if k == "number"]
+    for fence in [v for k, v in elements(steps_md) if k == "fence"]:
+        add("Hour 2 | Exercise 1", "Grading prompt", "Send it in a new chat each time you grade.",
+            chat(fence, "good", "Grading prompt - copy and send", cols=visual_lines(fence, 105) > 13))
     add("Hour 2 | Exercise 1", f"Exercise 1: {ex1_title[0].upper() + ex1_title[1:]}",
         "Guided practice. Follow the steps in order.",
         '<div class="grid one">' + card("Guided practice", "Steps", ol(steps1)) + "</div>")
@@ -322,30 +325,49 @@ def build(num: str) -> str:
     head_text = re.sub(r"^\s*-\s*Worked example \(run it\):\*\*\s*", "", part_a.split("```")[0]).strip()
     a_intro = [" ".join(head_text.split())] if head_text else []
     a_intro = [v for v in a_intro if v and not v.startswith("In the chat from Exercise 1")]
-    add("Hour 3 | Exercise 2", "Part A: Worked example (run it)", "Copy and send this completed prompt in the same chat.",
-        '<div class="grid two">' + chat(a_fence, "good", "Part A - copy and send")
-        + card("Check the answer", "Expected result",
-               "".join(f"<p><b>Case:</b> {md_inline(v)}</p>" for v in a_intro)
-               + "".join(f"<p>{md_inline(strip_check(c))}</p>" for c in a_check), "good") + "</div>")
+    a_card = card("Check the answer", "Expected result",
+                  "".join(f"<p><b>Case:</b> {md_inline(v)}</p>" for v in a_intro)
+                  + "".join(f"<p>{md_inline(strip_check(c))}</p>" for c in a_check), "good")
+    if visual_lines(a_fence, 52) > 22:
+        add("Hour 3 | Exercise 2", "Part A: Worked example (run it)", "Copy and send this completed prompt.",
+            chat(a_fence, "good", "Part A - copy and send", cols=True))
+        add("Hour 3 | Exercise 2", "Part A: Check the answer", "Compare the AI's answer with this.",
+            f'<div class="grid one">{a_card}</div>')
+    else:
+        add("Hour 3 | Exercise 2", "Part A: Worked example (run it)", "Copy and send this completed prompt in the same chat.",
+            '<div class="grid two">' + chat(a_fence, "good", "Part A - copy and send") + a_card + "</div>")
 
     b_els = elements("**Part B" + part_b)
     b_task = [v for k, v in b_els if k == "para" and not v.startswith("Check the answer")]
     b_task = [re.sub(r"^\*\*Part B[^*]*\*\*\s*", "", t) for t in b_task]
     b_check = [v for k, v in b_els if k == "para" and v.startswith("Check the answer")]
+    b_steps = [v for k, v in b_els if k == "number"]
+    b_fences = [v for k, v in b_els if k == "fence"]
     add("Hour 3 | Exercise 2", "Part B: Your turn (write it)", "Fill in the template yourself and send it.",
-        '<div class="grid two">' + card("Your task", "Write your own prompt", "".join(f"<p>{md_inline(t)}</p>" for t in b_task))
+        '<div class="grid two">' + card("Your task", "Write your own prompt",
+                                        "".join(f"<p>{md_inline(t)}</p>" for t in b_task) + (ol(b_steps) if b_steps else ""))
         + card("Check the answer", "Expected result",
                "".join(f"<p>{md_inline(strip_check(c))}</p>" for c in b_check), "good") + "</div>")
+    for i, fence in enumerate(b_fences, 1):
+        add("Hour 3 | Exercise 2", f"Part B: follow-up prompt {i}", "Send it in the same chat.",
+            chat(fence, "good", "Copy and send", cols=visual_lines(fence, 105) > 13))
 
     # Report and success check
-    report = re.findall(r"(?m)^  - \*\*(Introduction|Method|Results|Conclusion):\*\* (.+)$", section)
-    if [r[0] for r in report] != ["Introduction", "Method", "Results", "Conclusion"]:
-        raise RuntimeError(f"Session {num}: report sections not found")
-    file_name = re.search(r"File name: `(\S+?\.docx)`", section).group(1)
-    add("Session report", "Write your session report",
-        f"Use Report_template.docx in Microsoft Word. Save it as {file_name} and upload it to iLearn by 23:59 on class day.",
-        '<div class="grid one">' + card("Submit", "One report for this session",
-                                        ul([f"**{k}:** {v}" for k, v in report])) + "</div>")
+    report_md = bl["Report"]
+    report = re.findall(r"(?m)^  - \*\*(.+?):\*\* (.+)$", report_md)
+    file_name = re.search(r"File name: `(\S+?\.docx)`", report_md).group(1)
+    if "Worksheet" in file_name:
+        add("Session worksheet", "Submit your worksheet",
+            f"Fill in the worksheet in Microsoft Word during class. Save it as {file_name} and upload it to iLearn by 23:59 on class day.",
+            '<div class="grid one">' + card("Submit", "The completed worksheet",
+                                            ul([f"**{k}:** {v}" for k, v in report])) + "</div>")
+    else:
+        if [r[0] for r in report] != ["Introduction", "Method", "Results", "Conclusion"]:
+            raise RuntimeError(f"Session {num}: report sections not found")
+        add("Session report", "Write your session report",
+            f"Use Report_template.docx in Microsoft Word. Save it as {file_name} and upload it to iLearn by 23:59 on class day.",
+            '<div class="grid one">' + card("Submit", "One report for this session",
+                                            ul([f"**{k}:** {v}" for k, v in report])) + "</div>")
     success = bl["Success check"].strip()
     add("Finish and verify", "How to know the work is complete", "Check your report before you hand it in.",
         '<div class="grid one">' + card("Verify", "Success check", ul([success]), "good") + "</div>")
